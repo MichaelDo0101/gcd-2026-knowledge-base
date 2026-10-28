@@ -81,6 +81,10 @@
   .dcard.urgent{border-left-color:var(--block);} .dcard.high{border-left-color:var(--wait);} .dcard.mid{border-left-color:var(--wip);}
   .dcard .date{flex:0 0 128px; font-weight:800; font-size:12.5px; color:#111827; padding-top:2px;}
   .oq .q{font-weight:700; font-size:14px;}
+  .thumb{width:100%; height:150px; object-fit:cover; border-radius:10px; display:block; border:1px solid var(--line); background:#f9fafb;}
+  .thumb:hover{opacity:.92;}
+  .alogo{font-size:12px; color:var(--g1); font-weight:700; text-decoration:none;}
+  .alogo:hover{text-decoration:underline;}
   .oq .meta{font-size:12px; color:var(--mut); margin-top:2px;}
   .rec{margin-top:8px; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:9px; padding:8px 10px; font-size:12.5px; color:#065f46;}
   .dec{display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed var(--line); font-size:13px;}
@@ -117,6 +121,7 @@
     <button data-view="timeline">🕒 Dòng thời gian</button>
     <button data-view="decisions">📌 Quyết định & hạn</button>
     <button data-view="open">❓ Đang chờ <span>5</span></button>
+    <button data-view="assets">🖼 Thư viện <span>9</span></button>
   </nav>
   <main id="main">
     <section class="view active" id="v-overview"></section>
@@ -125,9 +130,10 @@
     <section class="view" id="v-timeline"></section>
     <section class="view" id="v-decisions"></section>
     <section class="view" id="v-open"></section>
+    <section class="view" id="v-assets"></section>
   </main>
 </div>
-<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · Ảnh thiết kế (layout, cổng chào, booth 360, hội trường) chưa được mô tả nội dung · Tạo bởi Cono</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · 9 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 13:39 ngày 28/10/2026 · Tạo & tự cập nhật bởi Cono</div>
 
 <script>
 const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
@@ -167,27 +173,27 @@ const P = {
 };
 
 const T = {
-  t1:{icon:'🧭', name:'Tên & Concept', st:'done', stl:'Đã chốt', g:['g1'], owner:['chin','tinh'], deps:[],
-    body:'“Global Citizens Day: The Heritage Odyssey” — Tính đề xuất, Chin chốt tối 25/10. Concept heritage xuyên suốt (văn hóa – di sản), lan sang cả thiết kế: cổng chào bớt hiện đại, gợi chất văn hóa.'},
+  t1:{icon:'🧭', name:'Tên & Concept', st:'done', stl:'Đã chốt', g:['g1'], owner:['chin','tinh'], deps:[], assets:['as1','as8','as9'],
+    body:'“Global Citizens Day: The Heritage Odyssey” — Tính đề xuất, Chin chốt tối 25/10. Slogan trên thiết kế: “Kết nối văn hóa · Kiến tạo tương lai” / “Different Cultures · One World · Same Future”. Concept heritage xuyên suốt (văn hóa – di sản), lan sang cả thiết kế: cổng chào bớt hiện đại, gợi chất văn hóa.'},
   t2:{icon:'💻', name:'Landing Page', st:'wip', stl:'Đang dựng — chờ đầu vào', g:['g2'], owner:['son'], deps:['t4','t5','t1'],
     body:'Sơn đang dựng; nội dung tạm dạng “lorem” demo chờ người xịn. Cần adapt theo khu vực (Chin giao 28/10). Phải dùng đúng tên + concept đã chốt.',
     extra:['Còn thiếu: timeline sự kiện, khách mời talkshow, sơ đồ gian hàng','Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
   t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Luồng OK — chờ 1 quyết định', g:['g2'], owner:['son','minh'], deps:['t4'],
     body:'Luồng hiện tại (đã chạy OK): guest nộp đề xuất KHÔNG cần đăng nhập → admin duyệt → 1 gian chỉ chốt 1 vị trí. Câu hỏi mở: có bắt đăng nhập không? (khuyến nghị: không, thêm 3 cơ chế nhẹ — xem mục Đang chờ).'},
-  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chốt trước 12:00 hôm nay', g:['g1'], owner:['tinh','chin'], deps:['t9'],
-    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating).',
-    extra:['Đã chia sẻ ảnh: layout phân lô, cổng chào 3D, booth camera 360','Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','S landing page phải map đúng layout này (đầu vào bắt buộc của hệ thống)']},
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chốt trước 12:00 hôm nay', g:['g1'], owner:['tinh','chin'], deps:['t9'], assets:['as5','as6','as7','as8','as9'],
+    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating). Bản dựng chi tiết hiện có của Tính đang là phương án 64 gian (xem ảnh) — cần cập nhật theo chốt 40/25.',
+    extra:['Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','S landing page phải map đúng layout này (đầu vào bắt buộc của hệ thống)']},
   t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Des xong — chờ PD duyệt', g:['g1'], owner:['thu','tam','thuyanh'], deps:[],
     body:'Bản design hoàn thiện sáng 28/10 (Thanh Tâm). Anh Thư + Thủy Anh finalize, gửi PD (Trường) double-check. Nhóm COC sẽ adapt theo khu vực rồi đưa vào landing page.'},
-  t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'],
+  t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1'],
     body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP.'},
   t7:{icon:'📣', name:'Truyền thông', st:'wait', stl:'Chờ sau tiếp xúc NTT', g:['g1'], owner:['thuyanh'], deps:['t6'],
     body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”.'},
-  t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'info', stl:'Đã rõ cơ bản', g:['g1'], owner:['qhanh'], deps:[],
+  t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'info', stl:'Đã rõ cơ bản', g:['g1'], owner:['qhanh'], deps:[], assets:['as2','as3','as4'],
     body:'Hội trường: setup đẹp nhất theo hình vuông (backup bố trí 3 cây nến). Khách vào qua cổng chúa Láng — nhìn thấy ngay, cách chỗ để xe máy ~50m đi bộ, nằm sau các tòa mới xây.'},
-  t9:{icon:'💰', name:'Ngân sách & định mức', st:'wip', stl:'Đang lập dự trù', g:['g1'], owner:['dat','dinhhanh'], deps:[],
+  t9:{icon:'💰', name:'Ngân sách & định mức', st:'wip', stl:'Đang lập dự trù', g:['g1'], owner:['dat','dinhhanh'], deps:[], assets:['as7','as8'],
     body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
-  t10:{icon:'✨', name:'Trải nghiệm gian hàng & sự kiện', st:'info', stl:'Định hướng — khớp tại họp t6', g:['g1'], owner:['truong','chin','tam'], deps:['t2','t3','t4'],
+  t10:{icon:'✨', name:'Trải nghiệm gian hàng & sự kiện', st:'info', stl:'Định hướng — khớp tại họp t6', g:['g1'], owner:['truong','chin','tam'], deps:['t2','t3','t4'], assets:['as9','as6'],
     body:'Triết lý của Trường: hành trình người tham dự = truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình. Sự kiện cần điểm nhấn khác biệt, tinh tế, truyền tải được thông điệp; tối ưu nguồn lực, kêu gọi nguồn lực ngoài khi được.'},
 };
 
@@ -211,8 +217,8 @@ const DEADLINES = [
 ];
 
 const OPEN = [
-  {q:'Guest đăng ký gian hàng có cần đăng nhập không?', meta:'Sơn → Minh · 11:32 ngày 28/10 (nhóm COC) · trạng thái: chờ anh gửi trả lời',
-   rec:'Khuyến nghị: KHÔNG cần đăng nhập. Bù lại: (1) form bắt buộc email + SĐT để liên hệ & lọc trùng; (2) gửi link xác nhận/theo dõi qua email để đơn vị xem trạng thái duyệt, sửa thông tin; (3) gian VIP (NTT sẵn có + debating) admin gán chỗ trực tiếp, không cho đăng ký công khai.'},
+  {q:'Guest đăng ký gian hàng có cần đăng nhập không?', meta:'Sơn → Minh · 11:32 ngày 28/10 (nhóm COC) · ✅ CẬP NHẬT 13:39: Sơn đồng ý “giữ luồng hiện tại” (không đăng nhập) — chờ anh gửi tin chốt chính thức',
+   rec:'Phương án đã đề xuất và được Sơn gật đầu: KHÔNG cần đăng nhập. Bù lại: (1) form bắt buộc email + SĐT để liên hệ & lọc trùng; (2) gửi link xác nhận/theo dõi qua email để đơn vị xem trạng thái duyệt, sửa thông tin; (3) gian VIP (NTT sẵn có + debating) admin gán chỗ trực tiếp, không cho đăng ký công khai.'},
   {q:'Timeline chính thức của sự kiện?', meta:'Sơn cần cho landing page · Chin nhận “đang nợ” · chưa thấy ở cả 2 nhóm', rec:'Cần hỏi lại ở nhóm lớn JCITL — đây là đầu vào bắt buộc của landing page.'},
   {q:'Danh sách khách mời talkshow?', meta:'Sơn cần cho landing page · Chin “đi kiếm người xịn về”', rec:''},
   {q:'Ngày diễn ra sự kiện cụ thể (tháng 11/2026)?', meta:'Quan sát: cả 2 nhóm chỉ nói “sự kiện tháng 11”', rec:''},
@@ -246,8 +252,38 @@ const TIMELINE = [
     {t:'11:03–11:05', g:'g1', who:'Anh Thư · Thanh Tâm', txt:'Des proposal xong, đã gửi.'},
     {t:'11:19–11:34', g:'g2', who:'Chin · Sơn · Minh', txt:'Chin giao adapt landing page + proposal theo khu vực; dự kiến họp t6 12:30–13:30 khớp toàn bộ nội dung; Tâm báo lịch với PD/LP + team setup. Sơn hỏi: guest đăng ký có cần đăng nhập? Minh hẹn tổng hợp bối cảnh.'},
     {t:'11:41', g:'g1', who:'Quang Đạt', txt:'Giới thiệu Nguyễn Ngọc Anh vào nhóm sự kiện tháng 11; Chin sẽ hướng dẫn chi tiết.'},
+    {t:'12:22–12:26', g:'g2', who:'Minh · Chin', txt:'Gửi link mời bot AI vào nhóm; Chin accept (nhóm 5→6 thành viên, bot “Bot JCI GCD 2026”); tin test @Bot bị thu hồi — khả năng phản hồi của bot chưa xác minh.'},
+    {t:'12:49', g:'g2', who:'Minh', txt:'Chia sẻ link Knowledge Base (trang tổng hợp này) vào nhóm COC GCD 2026.'},
+    {t:'13:01', g:'g2', who:'Minh (🤖 Trợ lý AI)', txt:'Gửi phương án: guest đăng ký giữ không-đăng-nhập; form bắt buộc email + SĐT; gửi link xác nhận/theo dõi qua email; gian VIP do admin gán trực tiếp trên dashboard.'},
+    {t:'13:39', g:'g2', who:'Đường Minh Sơn', txt:'“Oke rồi anh nhé, thế em sẽ giữ luồng hiện tại” — Sơn đồng ý giữ luồng không đăng nhập.'},
   ]},
 ];
+
+const ASSETS = [
+  {id:'as1', file:'2026-10-26-jcitl-truong-anh-2059.jpg', title:'Poster GCD kỳ trước “Beautiful Living”', who:'Phạm Văn Trường', when:'26/10 · 20:59', topics:['t6','t1','t10'],
+   desc:'Poster GCD 2025 (kỳ trước) ngày 29/11/2025 tại ĐH Quốc tế Hồng Bàng TP.HCM — tài liệu tham khảo về quy mô, bộ nhận diện và danh mục nhà tài trợ kỳ trước (PNJ, AI Education…).'},
+  {id:'as2', file:'2026-10-27-jcitl-hanh-hoi-truong-1224.jpg', title:'Ảnh hiện trạng hội trường (1)', who:'Nguyễn Quang Hanh', when:'27/10 · 12:24', topics:['t8'],
+   desc:'Ảnh hiện trạng khu vực hội trường — trả lời câu hỏi “hội trường là tòa nào” của Tính.'},
+  {id:'as3', file:'2026-10-27-jcitl-hanh-hoi-truong-khoanh-do-1225.jpg', title:'Ảnh hội trường — khoanh đỏ vị trí', who:'Nguyễn Quang Hanh', when:'27/10 · 12:25', topics:['t8'],
+   desc:'Ảnh hậu cần khoanh đỏ vị trí cần thiết lập, kèm chú thích “cái em khoanh đỏ á anh”.'},
+  {id:'as4', file:'2026-10-27-jcitl-hanh-cong-vao-hoi-truong-1240.jpg', title:'Cổng vào hội trường', who:'Nguyễn Quang Hanh', when:'27/10 · 12:40', topics:['t8'],
+   desc:'Cổng vào hội trường nhìn từ bên ngoài — cách chỗ để xe máy ~50m đi bộ, nằm sau các tòa mới xây.'},
+  {id:'as5', file:'2026-10-27-jcitl-tinh-layout-gian-hang-1507.jpg', title:'Sơ đồ bố trí gian hàng (bản 64 gian)', who:'Lê Văn Tính', when:'27/10 · 15:07', topics:['t4','t9','t3'],
+   desc:'Phân lô chi tiết tổng 64 gian: 54 gian 1 mặt (2 gian ghép) + 10 gian 3 mặt ở góc; hội trường bên trái, cổng sự kiện góc phải trên, mũi tên xanh là luồng khách. ⚠️ Là bản DỰ THẢO trước khi Chin chốt phương án 40/25 gian (28/10) — cần cập nhật theo phương án mới trước khi đưa vào landing page.'},
+  {id:'as6', file:'2026-10-27-jcitl-tinh-booth-gian-dau-1517.jpg', title:'Thiết kế gian đầu dạng booth kín', who:'Lê Văn Tính', when:'27/10 · 15:17', topics:['t4','t10'],
+   desc:'Gian đầu thiết kế dạng booth — booth 1 dự kiến chứa camera 360 + backdrop check-in (tránh nắng, che thiết bị điện tử).'},
+  {id:'as7', file:'2026-10-27-jcitl-tinh-mau-camera-360-1521.jpg', title:'Mẫu camera 360', who:'Lê Văn Tính', when:'27/10 · 15:21', topics:['t4','t9'],
+   desc:'Mẫu booth camera 360 đề xuất (chi phí tham khảo ~4–4,5tr).'},
+  {id:'as8', file:'2026-10-27-jcitl-tinh-cong-chao-de-xuat-1534.jpg', title:'2 phương án cổng chào: Hơi & Formex', who:'Lê Văn Tính', when:'27/10 · 15:34', topics:['t4','t9','t1'],
+   desc:'Cổng hơi (inflatable) và cổng formex, đều mang slogan “GLOBAL CITIZENS DAY 2026 — Kết nối văn hóa · Kiến tạo tương lai”, gốm yếu tố văn hóa (Chùa Thần, áo dài) + công nghệ (robot, trái đất). Chin muốn nghiêng về hướng heritage, bớt hiện đại.'},
+  {id:'as9', file:'2026-10-27-jcitl-tinh-duong-di-trai-nghiem-1554.jpg', title:'Concept phố trải nghiệm gian hàng', who:'Lê Văn Tính', when:'27/10 · 15:54', topics:['t10','t4','t1'],
+   desc:'Render concept làng trải nghiệm: nặn tò he, vẽ mặt nạ, công nghệ 3D, âm nhạc truyền thống, cờ các quốc gia; thông điệp “Different Cultures · One World · Same Future”.'},
+];
+const LINKS_EXTRA = [
+  {title:'Fanpage Đoàn Thái Cúc Hương (giấy dó)', url:'https://www.facebook.com/doan.thai.cuc.huong.artsncrafts', who:'Chin', when:'28/10 · 09:52', note:'Vendor gợi ý cho mảng heritage / trải nghiệm văn hóa.'},
+  {title:'Link mời bot “Bot JCI GCD 2026”', url:'https://bot.zaloplatforms.com/groups/invite/bot.EhEvevHz', who:'Đỗ Hồng Minh', when:'28/10 · 12:22', note:'Bot Zalo platform đã được add vào nhóm COC GCD 2026 (Chin accept 12:24); khả năng phản hồi chưa xác minh.'},
+];
+const chipA = id => `<button class="chip person" data-goto="a:${id}">🖼 ${ASSETS.find(x=>x.id===id).title}</button>`;
 
 /* ---------- RENDER ---------- */
 const $ = s => document.querySelector(s);
@@ -324,6 +360,7 @@ function renderTopics(){
       <h3>${t.icon} ${t.name} <span class="badge ${ST[t.st]}">${t.stl}</span></h3>
       <div class="depline">Nhóm: ${GTAG(t.g.length>1?'both':t.g[0])} · Chủ trì: ${t.owner.map(chipP).join('')}</div>
       ${t.deps.length?`<div class="depline"><span class="arrow">←</span> phụ thuộc: ${t.deps.map(chipT).join('')}</div>`:''}
+      ${(t.assets&&t.assets.length)?`<div class="depline">📎 ảnh: ${t.assets.map(chipA).join('')}</div>`:''}
       <div class="body">${t.body}</div>
       ${t.extra?`<ul>${t.extra.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
     </div>`).join('') + '</div>';
@@ -353,8 +390,30 @@ function renderOpen(){
     ${o.rec?`<div class="rec">💡 ${o.rec}</div>`:''}</div>`).join('') + '</div>';
 }
 
+function renderAssets(){
+  $('#v-assets').innerHTML = '<h2 class="sec">🖼 Thư viện Assets — ảnh gốc từ nhóm JCITL</h2>' +
+    '<p style="font-size:12.5px;color:var(--mut);margin:-4px 0 10px">Ảnh được lưu bản gốc trong thư mục <b>assets/</b> của repo (bấm vào ảnh hoặc “Xem ảnh đầy đủ” để mở kích thước gốc). Bấm chip chủ đề để nhảy tới bối cảnh liên quan.</p>' +
+    '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(255px,1fr))">' +
+    ASSETS.map(a=>`
+    <div class="card" id="a-${a.id}">
+      <a href="assets/${a.file}" target="_blank" rel="noopener"><img class="thumb" src="assets/${a.file}" alt="${a.title}" loading="lazy"></a>
+      <h3 style="font-size:13.5px; margin-top:8px">${a.title}</h3>
+      <div class="depline">${GTAG('g1')} · ${a.who} · ${a.when}</div>
+      <div style="font-size:12.5px; color:#4b5563; margin-top:6px">${a.desc}</div>
+      <div style="margin-top:7px">${a.topics.map(chipT).join('')}</div>
+      <div class="depline" style="margin-top:8px"><a class="alogo" href="assets/${a.file}" target="_blank" rel="noopener">🔍 Xem ảnh kích thước đầy đủ ↗</a></div>
+    </div>`).join('') + '</div>' +
+    '<h2 class="sec">🔗 Link & tài nguyên chia sẻ trong chat</h2><div style="display:grid; gap:10px">' +
+    LINKS_EXTRA.map(l=>`
+    <div class="card"><b style="font-size:13.5px">${l.title}</b>
+      <div class="depline">${GTAG('g1')} · ${l.who} · ${l.when}</div>
+      <div style="font-size:12.5px;color:#4b5563;margin-top:4px">${l.note}</div>
+      <div class="depline"><a class="alogo" href="${l.url}" target="_blank" rel="noopener">${l.url} ↗</a></div>
+    </div>`).join('') + '</div>';
+}
+
 /* ---------- NAV + LINKS + SEARCH ---------- */
-const VIEWS = ['overview','people','topics','timeline','decisions','open'];
+const VIEWS = ['overview','people','topics','timeline','decisions','open','assets'];
 function show(view, anchor){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   $('#v-'+view).classList.add('active');
@@ -373,6 +432,7 @@ document.addEventListener('click', e=>{
   const [kind, id] = c.dataset.goto.split(':');
   if(kind==='p') show('people', 'p-'+id);
   if(kind==='t') show('topics', 't-'+id);
+  if(kind==='a') show('assets', 'a-'+id);
 });
 $('#search').addEventListener('input', e=>{
   const q = e.target.value.trim().toLowerCase();
@@ -391,7 +451,7 @@ document.addEventListener('click', e=>{
   show(r.dataset.gotoView, r.dataset.gotoAnchor || undefined);
 });
 
-renderOverview(); renderPeople(); renderTopics(); renderTimeline(); renderDecisions(); renderOpen();
+renderOverview(); renderPeople(); renderTopics(); renderTimeline(); renderDecisions(); renderOpen(); renderAssets();
 </script>
 </body>
 </html>
