@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCD 2026 — Knowledge Base</title>
+<style>
+  :root{
+    --g1:#4f46e5; --g1bg:#eef2ff;
+    --g2:#0d9488; --g2bg:#f0fdfa;
+    --share:#d97706; --sharebg:#fffbeb;
+    --done:#16a34a; --wait:#d97706; --wip:#2563eb; --block:#dc2626; --info:#64748b;
+    --ink:#1f2937; --mut:#6b7280; --line:#e5e7eb; --card:#ffffff; --bg:#f4f6fb;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); font-size:14.5px; line-height:1.55;}
+  header{position:sticky; top:0; z-index:20; background:linear-gradient(120deg,#312e81 0%,#0e7490 100%); color:#fff; padding:14px 18px; box-shadow:0 2px 10px rgba(0,0,0,.15);}
+  header h1{font-size:17px; font-weight:700;}
+  header h1 .en{color:#fde68a;}
+  header .sub{font-size:12px; opacity:.85; margin-top:2px;}
+  #search{margin-top:9px; width:100%; max-width:420px; padding:8px 12px; border-radius:20px; border:none; outline:none; font-size:13.5px; background:rgba(255,255,255,.95); color:var(--ink);}
+  .layout{display:flex; gap:16px; padding:16px; max-width:1180px; margin:0 auto;}
+  nav{flex:0 0 200px; position:sticky; top:118px; align-self:flex-start; display:flex; flex-direction:column; gap:6px;}
+  nav button{all:unset; cursor:pointer; padding:9px 12px; border-radius:10px; font-size:13.5px; color:#374151; background:#fff; border:1px solid var(--line); display:flex; justify-content:space-between;}
+  nav button.active{background:var(--g1); color:#fff; border-color:var(--g1); font-weight:600;}
+  nav button:hover:not(.active){background:#eef2ff;}
+  main{flex:1; min-width:0;}
+  .view{display:none;} .view.active{display:block; animation:fade .18s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;}}
+  h2.sec{font-size:15px; font-weight:700; margin:20px 0 10px; display:flex; align-items:center; gap:8px;}
+  h2.sec:first-child{margin-top:0;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:0 1px 3px rgba(16,24,40,.05);}
+  .grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(250px,1fr));}
+  .stats{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); margin-bottom:16px;}
+  .stat{background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px 12px; text-align:center;}
+  .stat b{display:block; font-size:19px; color:var(--g1);}
+  .stat span{font-size:11.5px; color:var(--mut);}
+  .chip{display:inline-flex; align-items:center; gap:4px; border:none; cursor:pointer; border-radius:999px; padding:2.5px 10px; font-size:12px; font-weight:600; margin:2px 3px 2px 0; background:#eef2ff; color:#3730a3; transition:transform .08s;}
+  .chip:hover{transform:translateY(-1px);}
+  .chip.person{background:#e0e7ff; color:#3730a3;}
+  .chip.topic{background:#d1fae5; color:#065f46;}
+  .chip.g1{background:var(--g1bg); color:var(--g1);}
+  .chip.g2{background:var(--g2bg); color:var(--g2);}
+  .chip.both{background:var(--sharebg); color:var(--share);}
+  .badge{display:inline-block; border-radius:6px; padding:1px 8px; font-size:11px; font-weight:700;}
+  .b-done{background:#dcfce7; color:var(--done);} .b-wip{background:#dbeafe; color:var(--wip);}
+  .b-wait{background:#fef3c7; color:var(--wait);} .b-block{background:#fee2e2; color:var(--block);}
+  .b-info{background:#f1f5f9; color:var(--info);}
+  .avatar{width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; font-size:14px; flex:0 0 38px;}
+  .av-g1{background:var(--g1);} .av-g2{background:var(--g2);} .av-both{background:linear-gradient(135deg,var(--g1),var(--g2));}
+  .pcard .top{display:flex; gap:10px; align-items:center; margin-bottom:6px;}
+  .pcard h3{font-size:14.5px;}
+  .role{font-size:12.5px; color:var(--mut); margin-top:1px;}
+  .note{font-size:12.5px; color:#4b5563; background:#f9fafb; border-radius:8px; padding:6px 9px; margin-top:7px;}
+  .tcard h3{font-size:14.5px; display:flex; align-items:center; gap:7px; flex-wrap:wrap;}
+  .tcard .body{font-size:13px; color:#374151; margin-top:7px;}
+  .tcard ul{margin:7px 0 0 18px; font-size:12.5px; color:#4b5563;}
+  .tcard .deps{margin-top:8px; font-size:12px; color:var(--mut);}
+  .depline{margin-top:7px; font-size:12px; color:var(--mut); display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .arrow{color:var(--share); font-weight:800;}
+  /* diagram */
+  .map{display:flex; flex-direction:column; align-items:stretch; gap:0; margin:6px 0 4px;}
+  .mapbox{border-radius:14px; padding:12px 14px; border:2px solid;}
+  .mapbox.g1{border-color:var(--g1); background:var(--g1bg);}
+  .mapbox.g2{border-color:var(--g2); background:var(--g2bg);}
+  .mapbox h4{font-size:13.5px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .mapbox .mroles{margin-top:6px; font-size:12.5px; color:#374151;}
+  .mapflow{display:flex; align-items:center; justify-content:center; gap:8px; padding:9px 4px; font-size:12px; color:var(--share); font-weight:700; flex-wrap:wrap; text-align:center;}
+  .mapflow .down{font-size:18px; line-height:1;}
+  /* timeline */
+  .tl{position:relative; margin-left:8px; padding-left:22px; border-left:2px solid #c7d2fe;}
+  .tl .day{font-weight:800; font-size:13.5px; margin:16px 0 8px; color:#312e81; position:relative;}
+  .tl .day:first-child{margin-top:0;}
+  .ev{position:relative; margin-bottom:10px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 11px; font-size:13px;}
+  .ev::before{content:""; position:absolute; left:-29px; top:14px; width:10px; height:10px; border-radius:50%; background:var(--g1); border:2px solid #fff; box-shadow:0 0 0 1px var(--g1);}
+  .ev.g2::before{background:var(--g2); box-shadow:0 0 0 1px var(--g2);}
+  .ev .t{font-weight:700; color:#111827; margin-right:6px;}
+  .ev .who{font-size:12px; color:var(--mut);}
+  /* deadlines & open */
+  .dcard{display:flex; gap:12px; align-items:flex-start; border-left:5px solid var(--wip);}
+  .dcard.urgent{border-left-color:var(--block);} .dcard.high{border-left-color:var(--wait);} .dcard.mid{border-left-color:var(--wip);}
+  .dcard .date{flex:0 0 128px; font-weight:800; font-size:12.5px; color:#111827; padding-top:2px;}
+  .oq .q{font-weight:700; font-size:14px;}
+  .oq .meta{font-size:12px; color:var(--mut); margin-top:2px;}
+  .rec{margin-top:8px; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:9px; padding:8px 10px; font-size:12.5px; color:#065f46;}
+  .dec{display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed var(--line); font-size:13px;}
+  .dec:last-child{border-bottom:none;}
+  .dec .dd{flex:0 0 64px; font-weight:800; color:#312e81; font-size:12px; padding-top:1px;}
+  table.maptable{width:100%; border-collapse:collapse; font-size:12.5px;}
+  table.maptable th{background:#f9fafb; text-align:left; padding:7px 9px; border:1px solid var(--line); font-size:12px;}
+  table.maptable td{padding:7px 9px; border:1px solid var(--line); vertical-align:top;}
+  .grouptag{font-size:10.5px; font-weight:800; border-radius:5px; padding:1px 6px; letter-spacing:.3px;}
+  .gt1{background:var(--g1); color:#fff;} .gt2{background:var(--g2); color:#fff;} .gtb{background:var(--share); color:#fff;}
+  .flash{animation:flash 1.6s ease;}
+  @keyframes flash{0%{box-shadow:0 0 0 3px #fbbf24;} 100%{box-shadow:0 0 0 0 rgba(251,191,36,0);}}
+  .footer{margin:26px 0 10px; font-size:11.5px; color:var(--mut); text-align:center;}
+  @media (max-width:820px){
+    .layout{flex-direction:column;}
+    nav{position:static; flex-direction:row; overflow-x:auto; padding-bottom:4px;}
+    nav button{white-space:nowrap;}
+    .dcard{flex-direction:column; gap:2px;}
+    .dcard .date{flex:none;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🌍 Global Citizens Day: <span class="en">The Heritage Odyssey</span> — Knowledge Base</h1>
+  <div class="sub">Đóng gói từ 2 nhóm ZaloCRM: “JCITL-COC Team Global Citizens Day 2026” + “COC GCD 2026” · dữ liệu đọc ngày 28/10/2026</div>
+  <input id="search" type="search" placeholder="🔎 Tìm người, chủ đề, việc đang chờ…">
+</header>
+<div class="layout">
+  <nav id="nav">
+    <button data-view="overview" class="active">🗺️ Tổng quan</button>
+    <button data-view="people">👥 Nhân sự <span>14</span></button>
+    <button data-view="topics">🧩 Chủ đề & đầu việc <span>10</span></button>
+    <button data-view="timeline">🕒 Dòng thời gian</button>
+    <button data-view="decisions">📌 Quyết định & hạn</button>
+    <button data-view="open">❓ Đang chờ <span>5</span></button>
+  </nav>
+  <main id="main">
+    <section class="view active" id="v-overview"></section>
+    <section class="view" id="v-people"></section>
+    <section class="view" id="v-topics"></section>
+    <section class="view" id="v-timeline"></section>
+    <section class="view" id="v-decisions"></section>
+    <section class="view" id="v-open"></section>
+  </main>
+</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · Ảnh thiết kế (layout, cổng chào, booth 360, hội trường) chưa được mô tả nội dung · Tạo bởi Cono</div>
+
+<script>
+const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
+const chipP = id => `<button class="chip person" data-goto="p:${id}">${P[id].name}</button>`;
+const chipT = id => `<button class="chip topic" data-goto="t:${id}">${T[id].icon} ${T[id].name}</button>`;
+const ST = {done:'b-done', wip:'b-wip', wait:'b-wait', block:'b-block', info:'b-info'};
+
+const P = {
+  truong:{name:'Phạm Văn Trường', init:'PT', g:['g1'], roles:['PD — Giám đốc dự án','Đầu mối tài trợ'], topics:['t6','t5','t9','t10'],
+    note:'Phát động lại mảng tài trợ 26/10; nguyên tắc “tiếp xúc doanh nghiệp riêng trước, truyền thông sau”; chia sẻ triết lý tổ chức sự kiện; duyệt proposal cuối.'},
+  dinhhanh:{name:'Đinh Hạnh', init:'ĐH', g:['g1'], roles:['Giám sát định mức / ngân sách'], topics:['t9'],
+    note:'“Sáng tạo trong định mức nhá” — yêu cầu bám dự trù sơ bộ, biết mỗi mục có khoảng bao tiền.'},
+  tinh:{name:'Lê Văn Tính', init:'T', g:['g1'], roles:['Thiết kế layout gian hàng · cổng chào'], topics:['t4','t9','t1'],
+    note:'Đang chốt layout với Chin (hạn 12:00 ngày 28/10). Đề xuất: booth camera 360 trong booth 1, cổng hơi / formex; venue setup hình vuông.'},
+  qhanh:{name:'Nguyễn Quang Hanh', init:'QH', g:['g1'], roles:['Hậu cần — địa điểm'], topics:['t8'],
+    note:'Chỉ dẫn hội trường: setup đẹp nhất hình vuông (backup 3 cây nến); cổng chúa Láng nhìn thấy ngay, cách chỗ để xe ~50m, sau các tòa mới xây.'},
+  dat:{name:'Quang Đạt', init:'QĐ', g:['g1'], roles:['Điều phối tài chính — dự trù'], topics:['t9'],
+    note:'Phối hợp lên dự trù tài chính các hạng mục; đùa “lễ hội tiêu tiền” về cổng chào; giới thiệu Nguyễn Ngọc Anh vào nhóm 28/10.'},
+  thu:{name:'Anh Thư', init:'AT', g:['g1'], roles:['Điều phối tài trợ — hồ sơ & lịch'], topics:['t5','t6'],
+    note:'Tạo folder Drive chung cho NTT chương trình; được PD nhờ sắp lịch họp team tài trợ; nhắc tiến độ des proposal.'},
+  tam:{name:'Thanh Tâm', init:'TT', g:['g1','g2'], roles:['Thiết kế proposal (JCITL)','VED — đầu mối kỹ thuật (COC)'], topics:['t5','t2'],
+    note:'Đã xong des proposal sáng 28/10. Ở nhóm COC: được Chin nhờ báo lịch họp với PD/LP + toàn bộ team trải nghiệm & setup gian hàng.'},
+  thuyanh:{name:'Phan Thủy Anh (Wigo Tourist)', init:'TA', g:['g1'], roles:['Truyền thông — thiết kế ảnh gói tài trợ'], topics:['t7','t5','t6'],
+    note:'Hỗ trợ thiết kế ảnh các gói tài trợ; Anh Thư hỏi tiến độ hồ sơ tài trợ bản des sáng 27/10 (chưa thấy trả lời).'},
+  tudao:{name:'Tu Dao Van', init:'TV', g:['g1'], roles:['LVP phụ trách dự án'], topics:['t6','t4'],
+    note:'Được PD thêm vào 26/10; hỗ trợ triển khai chương trình, đặc biệt kết nối NTT và gian hàng.'},
+  ngocanh:{name:'Nguyễn Ngọc Anh', init:'NA', g:['g1'], roles:['Thành viên mới (28/10)'], topics:['t4'],
+    note:'Quang Đạt giới thiệu vào nhóm sự kiện tháng 11 (đã trao đổi trước một số đầu việc); Chin sẽ hướng dẫn chi tiết.'},
+  chin:{name:'Chin', init:'C', g:['g1','g2'], roles:['Nội dung & chương trình (JCITL)','Điều phối nhóm digital (COC)'], topics:['t1','t4','t2','t5','t10'],
+    note:'Chốt tên sự kiện; ra quyết định layout 40/25 gian + 6 tiểu khu; muốn cổng chào hợp concept heritage. Đang nợ: timeline sự kiện, nội dung module, khách mời talkshow. Nghỉ ốm 26–27/10.'},
+  hue:{name:'Thanh Huế', init:'TH', g:['g1','g2'], roles:['Team tài trợ (JCITL)','Thành viên digital (COC)'], topics:['t6'],
+    note:'Đi công tác Thanh Hóa → nhóm digital dời họp sang thứ Sáu. Email: H2hnguyethue@gmail.com (đã được add Canva).'},
+  son:{name:'Đường Minh Sơn', init:'S', g:['g2'], roles:['Landing page & hệ thống đăng ký gian hàng'], topics:['t2','t3','t4'],
+    note:'Luồng đăng ký đã chạy OK (guest không cần đăng nhập, admin duyệt, 1 chỗ/1 gian). Chờ: sơ đồ gian hàng, timeline, khách mời talkshow. Admin Canva của nhóm.'},
+  minh:{name:'Đỗ Hồng Minh (bạn)', init:'M', g:['g2'], roles:['Cố vấn hệ thống & luồng đăng ký'], topics:['t3','t2'],
+    note:'Email minh0101.neu@gmail.com (đã add Canva). Đang cần chốt câu hỏi của Sơn: guest đăng ký có cần đăng nhập không.'},
+};
+
+const T = {
+  t1:{icon:'🧭', name:'Tên & Concept', st:'done', stl:'Đã chốt', g:['g1'], owner:['chin','tinh'], deps:[],
+    body:'“Global Citizens Day: The Heritage Odyssey” — Tính đề xuất, Chin chốt tối 25/10. Concept heritage xuyên suốt (văn hóa – di sản), lan sang cả thiết kế: cổng chào bớt hiện đại, gợi chất văn hóa.'},
+  t2:{icon:'💻', name:'Landing Page', st:'wip', stl:'Đang dựng — chờ đầu vào', g:['g2'], owner:['son'], deps:['t4','t5','t1'],
+    body:'Sơn đang dựng; nội dung tạm dạng “lorem” demo chờ người xịn. Cần adapt theo khu vực (Chin giao 28/10). Phải dùng đúng tên + concept đã chốt.',
+    extra:['Còn thiếu: timeline sự kiện, khách mời talkshow, sơ đồ gian hàng','Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
+  t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Luồng OK — chờ 1 quyết định', g:['g2'], owner:['son','minh'], deps:['t4'],
+    body:'Luồng hiện tại (đã chạy OK): guest nộp đề xuất KHÔNG cần đăng nhập → admin duyệt → 1 gian chỉ chốt 1 vị trí. Câu hỏi mở: có bắt đăng nhập không? (khuyến nghị: không, thêm 3 cơ chế nhẹ — xem mục Đang chờ).'},
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chốt trước 12:00 hôm nay', g:['g1'], owner:['tinh','chin'], deps:['t9'],
+    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating).',
+    extra:['Đã chia sẻ ảnh: layout phân lô, cổng chào 3D, booth camera 360','Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','S landing page phải map đúng layout này (đầu vào bắt buộc của hệ thống)']},
+  t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Des xong — chờ PD duyệt', g:['g1'], owner:['thu','tam','thuyanh'], deps:[],
+    body:'Bản design hoàn thiện sáng 28/10 (Thanh Tâm). Anh Thư + Thủy Anh finalize, gửi PD (Trường) double-check. Nhóm COC sẽ adapt theo khu vực rồi đưa vào landing page.'},
+  t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'],
+    body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP.'},
+  t7:{icon:'📣', name:'Truyền thông', st:'wait', stl:'Chờ sau tiếp xúc NTT', g:['g1'], owner:['thuyanh'], deps:['t6'],
+    body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”.'},
+  t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'info', stl:'Đã rõ cơ bản', g:['g1'], owner:['qhanh'], deps:[],
+    body:'Hội trường: setup đẹp nhất theo hình vuông (backup bố trí 3 cây nến). Khách vào qua cổng chúa Láng — nhìn thấy ngay, cách chỗ để xe máy ~50m đi bộ, nằm sau các tòa mới xây.'},
+  t9:{icon:'💰', name:'Ngân sách & định mức', st:'wip', stl:'Đang lập dự trù', g:['g1'], owner:['dat','dinhhanh'], deps:[],
+    body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
+  t10:{icon:'✨', name:'Trải nghiệm gian hàng & sự kiện', st:'info', stl:'Định hướng — khớp tại họp t6', g:['g1'], owner:['truong','chin','tam'], deps:['t2','t3','t4'],
+    body:'Triết lý của Trường: hành trình người tham dự = truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình. Sự kiện cần điểm nhấn khác biệt, tinh tế, truyền tải được thông điệp; tối ưu nguồn lực, kêu gọi nguồn lực ngoài khi được.'},
+};
+
+const DECISIONS = [
+  {d:'23/10', g:'g2', txt:'Lập nhóm digital “COC GCD 2026” (5 người, cùng 2 VED) cho sự kiện.'},
+  {d:'23/10', g:'g2', txt:'Chia sẻ Canva cho Thanh Huế và Đỗ Hồng Minh (Sơn thực hiện, xác nhận hoàn tất).'},
+  {d:'25/10', g:'g1', txt:'Chốt tên sự kiện đầu tiên: “Global Citizens Day: The Heritage Odyssey”.'},
+  {d:'26/10', g:'g1', txt:'Đơn vị chỉ đạo: Thành đoàn + YBA (JCI Thăng Long ED).'},
+  {d:'26/10', g:'g1', txt:'Nguyên tắc tài trợ: tiếp xúc doanh nghiệp riêng trước → truyền thông sau.'},
+  {d:'26/10', g:'g1', txt:'Bổ sung Tu Dao Van làm LVP phụ trách dự án (kết nối NTT, gian hàng).'},
+  {d:'27/10', g:'g1', txt:'“Sáng tạo trong định mức” — team lên phương án theo dự trù sơ bộ, xong review đánh giá tổng thể.'},
+  {d:'28/10', g:'g1', txt:'Layout 2 phương án 40/25 gian · 6 tiểu khu · VIP 1/2 cho NTT sẵn có + debating · trước 18/11 đủ 40 thì chạy 40, không đủ chạy 25 · mọi phương án trong ngân sách cho phép.'},
+  {d:'28/10', g:'g1', txt:'Bản design proposal hoàn thiện, chờ PD double-check.'},
+];
+
+const DEADLINES = [
+  {date:'28/10 · 12:00', lvl:'urgent', label:'Chốt phương án layout gian hàng cuối cùng', owner:'Chin ↔ Lê Văn Tính'},
+  {date:'T6 · 30/10 · 12:30–13:30', lvl:'high', label:'Họp khớp: landing page / sơ đồ gian hàng / proposal / truyền thông / trải nghiệm gian hàng', owner:'Nhóm COC · Thanh Tâm báo lịch với PD/LP + team trải nghiệm & setup'},
+  {date:'Trước 18/11', lvl:'mid', label:'Quyết định chạy phương án 40 hay 25 gian', owner:'Ban tổ chức'},
+  {date:'Tháng 11/2026', lvl:'mid', label:'Sự kiện diễn ra (ngày chính xác chưa được công bố ở cả 2 nhóm)', owner:'Toàn team'},
+];
+
+const OPEN = [
+  {q:'Guest đăng ký gian hàng có cần đăng nhập không?', meta:'Sơn → Minh · 11:32 ngày 28/10 (nhóm COC) · trạng thái: chờ anh gửi trả lời',
+   rec:'Khuyến nghị: KHÔNG cần đăng nhập. Bù lại: (1) form bắt buộc email + SĐT để liên hệ & lọc trùng; (2) gửi link xác nhận/theo dõi qua email để đơn vị xem trạng thái duyệt, sửa thông tin; (3) gian VIP (NTT sẵn có + debating) admin gán chỗ trực tiếp, không cho đăng ký công khai.'},
+  {q:'Timeline chính thức của sự kiện?', meta:'Sơn cần cho landing page · Chin nhận “đang nợ” · chưa thấy ở cả 2 nhóm', rec:'Cần hỏi lại ở nhóm lớn JCITL — đây là đầu vào bắt buộc của landing page.'},
+  {q:'Danh sách khách mời talkshow?', meta:'Sơn cần cho landing page · Chin “đi kiếm người xịn về”', rec:''},
+  {q:'Ngày diễn ra sự kiện cụ thể (tháng 11/2026)?', meta:'Quan sát: cả 2 nhóm chỉ nói “sự kiện tháng 11”', rec:''},
+  {q:'Kết quả họp team tài trợ + tiến độ hồ sơ tài trợ bản des (Wigo)?', meta:'PD hẹn Anh Thư sắp lịch 27/10 · Anh Thư hỏi Thủy Anh sáng 27/10 · chưa thấy báo cáo', rec:''},
+];
+
+const TIMELINE = [
+  {day:'23/10/2026 — Khởi động nhóm digital', evs:[
+    {t:'17:36', g:'g2', who:'Chin', txt:'Tạo nhóm COC GCD 2026 — 5 người, cùng 2 VED cho sự kiện.'},
+    {t:'19:52–22:20', g:'g2', who:'Sơn · Huế · Minh', txt:'Chia sẻ quyền Canva: Huế (H2hnguyethue@gmail.com), Minh (minh0101.neu@gmail.com) — hoàn tất.'},
+  ]},
+  {day:'25/10/2026 — Chốt tên sự kiện', evs:[
+    {t:'21:36', g:'g1', who:'Lê Văn Tính', txt:'Đề xuất tên đầu tiên: “Global Citizens Day: The Heritage Odyssey”.'},
+    {t:'21:43', g:'g1', who:'Chin', txt:'Chốt: “chốt r đáy”.'},
+  ]},
+  {day:'26/10/2026 — Tổ chức lại mảng tài trợ', evs:[
+    {t:'19:47', g:'g1', who:'Chin', txt:'Xin folder bộ logo các đơn vị PD tổng hợp + 1 trang danh sách đơn vị tài trợ.'},
+    {t:'20:25–20:29', g:'g1', who:'Phạm Văn Trường', txt:'Hỏi phạm vi folder logo (JCI quy chuẩn + NTT cũ — Chin: “both”); nhờ Anh Thư tạo folder Drive NTT; mời ~10 người vào team tài trợ; Wigo Tourist hỗ trợ thiết kế ảnh gói.'},
+    {t:'20:39', g:'g1', who:'Trường', txt:'Thêm Tu Dao Van — LVP phụ trách dự án, kết nối NTT & gian hàng.'},
+    {t:'20:42–20:59', g:'g1', who:'Chin · Trường', txt:'Xác nhận đơn vị chỉ đạo: Thành đoàn + YBA.'},
+  ]},
+  {day:'27/10/2026 — Địa điểm, thiết kế, định mức', evs:[
+    {t:'09:17', g:'g1', who:'Anh Thư', txt:'Hỏi Thủy Anh (Wigo): khi nào xong hồ sơ tài trợ bản des?'},
+    {t:'12:21–12:56', g:'g1', who:'Tính · Hanh', txt:'Trao đổi hội trường: setup hình vuông đẹp nhất / 3 cây nến; cổng chúa Láng; ~50m từ chỗ để xe.'},
+    {t:'15:07–15:54', g:'g1', who:'Tính · Trường · Đinh Hạnh · Đạt', txt:'Trình phương án gian hàng + cổng chào (hơi 6–10tr, formex 8,5–12,5tr, booth 360 ~4–4,5tr); Trường góp ý thêm backdrop, photo booth, camera 360; chia sẻ triết lý trải nghiệm người tham dự; Đinh Hạnh: “sáng tạo trong định mức”.'},
+    {t:'16:03', g:'g1', who:'Trường', txt:'Lệnh finalize Proposal (Anh Thư, Thanh Tâm, Thủy Anh) — xong gửi PD double-check.'},
+  ]},
+  {day:'28/10/2026 (hôm nay) — Quyết định layout & kết nối 2 nhóm', evs:[
+    {t:'09:39', g:'g1', who:'Chin', txt:'Xin lỗi vì 26–27/10 nghỉ ốm, không nghe máy.'},
+    {t:'09:42–09:54', g:'g1', who:'Chin ↔ Tính', txt:'Quyết định layout: 2 phương án 40/25 gian, 6 tiểu khu (quà/voucher · Roots of Knowledge/Nature/… · VIP1/VIP2); chốt trước 12:00; cổng 3D đẹp nhưng muốn heritage; gửi link vendor giấy dó (Đoàn Thái Cúc Hương).'},
+    {t:'11:03–11:05', g:'g1', who:'Anh Thư · Thanh Tâm', txt:'Des proposal xong, đã gửi.'},
+    {t:'11:19–11:34', g:'g2', who:'Chin · Sơn · Minh', txt:'Chin giao adapt landing page + proposal theo khu vực; dự kiến họp t6 12:30–13:30 khớp toàn bộ nội dung; Tâm báo lịch với PD/LP + team setup. Sơn hỏi: guest đăng ký có cần đăng nhập? Minh hẹn tổng hợp bối cảnh.'},
+    {t:'11:41', g:'g1', who:'Quang Đạt', txt:'Giới thiệu Nguyễn Ngọc Anh vào nhóm sự kiện tháng 11; Chin sẽ hướng dẫn chi tiết.'},
+  ]},
+];
+
+/* ---------- RENDER ---------- */
+const $ = s => document.querySelector(s);
+
+function renderOverview(){
+  $('#v-overview').innerHTML = `
+  <div class="stats">
+    <div class="stat"><b>2</b><span>nhóm ZaloCRM</span></div>
+    <div class="stat"><b>31 + 5</b><span>thành viên</span></div>
+    <div class="stat"><b>14</b><span>người được nhắc</span></div>
+    <div class="stat"><b>10</b><span>chủ đề</span></div>
+    <div class="stat"><b>4</b><span>mốc hạn</span></div>
+    <div class="stat"><b>5</b><span>việc đang chờ</span></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14.5px">Sự kiện: “Global Citizens Day: The Heritage Odyssey”</h3>
+    <p style="font-size:13px; color:#374151; margin-top:6px">Chương trình của <b>JCI Thăng Long</b>, đơn vị chỉ đạo <b>Thành đoàn + YBA</b>. Diễn ra <b>tháng 11/2026</b> (ngày chưa công bố). Concept: <b>heritage — di sản văn hóa</b>. Quy mô gian hàng: 2 phương án <b>40</b> (chính) / <b>25</b> (backup) gian, chia <b>6 tiểu khu</b>. Hai nhóm ZaloCRM phục vụ cùng một sự kiện: nhóm lớn là ban tổ chức, nhóm nhỏ là tổ digital (landing page + hệ thống đăng ký gian hàng).</p>
+    <div style="margin-top:8px">${chipT('t1')} ${chipT('t4')} ${chipT('t10')}</div>
+  </div>
+
+  <h2 class="sec">🔗 Hai nhóm nối vào nhau thế nào</h2>
+  <div class="map">
+    <div class="mapbox g1">
+      <h4>JCITL-COC Team Global Citizens Day 2026 <span class="grouptag gt1">31 TV</span> — Ban tổ chức</h4>
+      <div class="mroles">PD Trường (tài trợ) · Đinh Hạnh (định mức) · Tính (layout gian hàng) · Hanh (địa điểm) · Đạt (tài chính) · Anh Thư (hồ sơ) · Thủy Anh/Wigo (truyền thông) · Tu Dao Van (LVP dự án)</div>
+    </div>
+    <div class="mapflow"><span class="down">⬇</span> bàn giao đầu vào cho tổ digital: <b>sơ đồ gian hàng (40/25, 6 tiểu khu)</b> · <b>proposal (đã des xong)</b> · <b>tên + concept heritage</b> · <b>timeline (còn nợ)</b> <span class="down">⬇</span></div>
+    <div class="mapbox g2">
+      <h4>COC GCD 2026 <span class="grouptag gt2">5 TV</span> — Tổ digital</h4>
+      <div class="mroles">Sơn (landing page + hệ thống đăng ký gian hàng) · Minh (cố vấn hệ thống) · Chin (điều phối nội dung) · Thanh Tâm (VED — đầu mối kỹ thuật) · Thanh Huế</div>
+    </div>
+    <div class="mapflow"><span class="down">⬇</span> sản phẩm digital → khớp toàn bộ tại <b>họp thứ Sáu 30/10, 12:30–13:30</b> <span class="down">⬇</span></div>
+    <div class="mapbox" style="border-color:var(--share); background:var(--sharebg)">
+      <h4>🎯 Trải nghiệm gian hàng & sự kiện</h4>
+      <div class="mroles">Hành trình người tham dự: truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình</div>
+    </div>
+  </div>
+
+  <div style="margin-top:10px; font-size:12.5px; color:var(--mut)">Người chung 2 nhóm: ${chipP('chin')} ${chipP('tam')} ${chipP('hue')} — họ là "cầu nối" truyền thông tin.</div>
+
+  <h2 class="sec">🧭 Bảng liên kết chủ đề giữa 2 nhóm</h2>
+  <div class="card" style="overflow-x:auto">
+    <table class="maptable">
+      <tr><th>Chủ đề</th><th>Nhóm lớn (JCITL)</th><th>Nhóm digital (COC)</th></tr>
+      <tr><td><b>Sơ đồ gian hàng</b></td><td>Tính dựng layout 40/25 gian · 6 tiểu khu — chốt 12:00 hôm nay</td><td>Sơn đang chờ đúng cái này để hoàn thiện landing page; luồng “1 gian 1 vị trí” khớp logic chốt chỗ</td></tr>
+      <tr><td><b>Proposal</b></td><td>Des xong sáng 28/10, chờ PD duyệt</td><td>Chin giao adapt theo khu vực + đưa vào LP</td></tr>
+      <tr><td><b>Tên & concept</b></td><td>“The Heritage Odyssey” · heritage</td><td>LP cần dùng đúng tên + tinh thần heritage (chưa được nhắc rõ trong nhóm nhỏ)</td></tr>
+      <tr><td><b>Timeline</b></td><td>Mốc 18/11 (40/25 gian); sự kiện tháng 11</td><td>Sơn thiếu timeline + khách mời talkshow → phải lấy từ nhóm lớn</td></tr>
+      <tr><td><b>Ngân sách</b></td><td>Cổng 6–15tr · booth 360 ~4–4,5tr · “sáng tạo trong định mức”</td><td>Chin: phương án nào cũng trong dự trù cho phép</td></tr>
+    </table>
+  </div>`;
+}
+
+function renderPeople(){
+  $('#v-people').innerHTML = '<h2 class="sec">👥 Nhân sự (click chip để nhảy tới liên quan)</h2><div class="grid">' +
+    Object.entries(P).map(([id,p]) => `
+    <div class="card pcard" id="p-${id}">
+      <div class="top">
+        <div class="avatar av-${p.g.length>1?'both':p.g[0]}">${p.init}</div>
+        <div><h3>${p.name}</h3>
+        <div>${p.g.map(g=>`<span class="grouptag ${g==='g1'?'gt1':'gt2'}">${g==='g1'?'JCITL':'COC'}</span>`).join(' ')}</div></div>
+      </div>
+      <div class="role">${p.roles.join(' · ')}</div>
+      <div style="margin-top:6px">${p.topics.map(chipT).join('')}</div>
+      <div class="note">${p.note}</div>
+    </div>`).join('') + '</div>';
+}
+
+function renderTopics(){
+  $('#v-topics').innerHTML = '<h2 class="sec">🧩 Chủ đề & đầu việc</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">' +
+    Object.entries(T).map(([id,t]) => `
+    <div class="card tcard" id="t-${id}">
+      <h3>${t.icon} ${t.name} <span class="badge ${ST[t.st]}">${t.stl}</span></h3>
+      <div class="depline">Nhóm: ${GTAG(t.g.length>1?'both':t.g[0])} · Chủ trì: ${t.owner.map(chipP).join('')}</div>
+      ${t.deps.length?`<div class="depline"><span class="arrow">←</span> phụ thuộc: ${t.deps.map(chipT).join('')}</div>`:''}
+      <div class="body">${t.body}</div>
+      ${t.extra?`<ul>${t.extra.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+    </div>`).join('') + '</div>';
+}
+
+function renderTimeline(){
+  $('#v-timeline').innerHTML = '<h2 class="sec">🕒 Dòng thời gian (điểm mốc)</h2><div class="tl">' +
+    TIMELINE.map(d => `<div class="day">📅 ${d.day}</div>` +
+      d.evs.map(e => `<div class="ev ${e.g}"><span class="t">${e.t}</span>${GTAG(e.g)} <span class="who">${e.who}</span><div style="margin-top:3px">${e.txt}</div></div>`).join('')
+    ).join('') + '</div>';
+}
+
+function renderDecisions(){
+  $('#v-decisions').innerHTML = `
+  <h2 class="sec">📌 Quyết định đã chốt</h2>
+  <div class="card">${DECISIONS.map(x=>`<div class="dec"><div class="dd">${x.d}</div><div>${GTAG(x.g)} ${x.txt}</div></div>`).join('')}</div>
+  <h2 class="sec">⏰ Mốc hạn</h2>
+  <div style="display:grid; gap:10px">${DEADLINES.map(x=>`
+    <div class="card dcard ${x.lvl}"><div class="date">${x.date}</div>
+    <div><b>${x.label}</b><div style="font-size:12.5px; color:var(--mut); margin-top:2px">Phụ trách: ${x.owner}</div></div></div>`).join('')}</div>`;
+}
+
+function renderOpen(){
+  $('#v-open').innerHTML = '<h2 class="sec">❓ Việc đang chờ / câu hỏi mở</h2><div style="display:grid; gap:12px">' +
+    OPEN.map(o=>`
+    <div class="card oq"><div class="q">${o.q}</div><div class="meta">${o.meta}</div>
+    ${o.rec?`<div class="rec">💡 ${o.rec}</div>`:''}</div>`).join('') + '</div>';
+}
+
+/* ---------- NAV + LINKS + SEARCH ---------- */
+const VIEWS = ['overview','people','topics','timeline','decisions','open'];
+function show(view, anchor){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  $('#v-'+view).classList.add('active');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+  if(anchor){
+    const el = document.getElementById(anchor);
+    if(el){ el.scrollIntoView({behavior:'smooth', block:'center'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  } else { window.scrollTo({top:0}); }
+}
+document.getElementById('nav').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  $('#search').value=''; show(b.dataset.view);
+});
+document.addEventListener('click', e=>{
+  const c = e.target.closest('[data-goto]'); if(!c) return;
+  const [kind, id] = c.dataset.goto.split(':');
+  if(kind==='p') show('people', 'p-'+id);
+  if(kind==='t') show('topics', 't-'+id);
+});
+$('#search').addEventListener('input', e=>{
+  const q = e.target.value.trim().toLowerCase();
+  if(q.length<2){ show(document.querySelector('#nav button.active').dataset.view); return; }
+  const hits = [];
+  Object.entries(P).forEach(([id,p])=>{ if((p.name+p.roles.join()+p.note).toLowerCase().includes(q)) hits.push({v:'people', a:'p-'+id, label:'👤 '+p.name, sub:p.roles.join(' · ')}); });
+  Object.entries(T).forEach(([id,t])=>{ if((t.name+t.body).toLowerCase().includes(q)) hits.push({v:'topics', a:'t-'+id, label:t.icon+' '+t.name, sub:t.stl}); });
+  OPEN.forEach(o=>{ if(o.q.toLowerCase().includes(q)) hits.push({v:'open', a:'', label:'❓ '+o.q, sub:o.meta}); });
+  $('#v-open').innerHTML = '<h2 class="sec">🔎 Kết quả tìm kiếm: “'+e.target.value.trim()+'” ('+hits.length+')</h2><div style="display:grid; gap:10px">' +
+    (hits.length ? hits.map(h=>`<div class="card" style="cursor:pointer" data-goto-view="${h.v}" data-goto-anchor="${h.a}"><b>${h.label}</b><div style="font-size:12px;color:var(--mut)">${h.sub}</div></div>`).join('') : '<div class="card">Không tìm thấy.</div>') + '</div>';
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  $('#v-open').classList.add('active');
+});
+document.addEventListener('click', e=>{
+  const r = e.target.closest('[data-goto-view]'); if(!r) return;
+  show(r.dataset.gotoView, r.dataset.gotoAnchor || undefined);
+});
+
+renderOverview(); renderPeople(); renderTopics(); renderTimeline(); renderDecisions(); renderOpen();
+</script>
+</body>
+</html>
