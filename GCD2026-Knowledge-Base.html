@@ -120,8 +120,8 @@
     <button data-view="topics">🧩 Chủ đề & đầu việc <span>10</span></button>
     <button data-view="timeline">🕒 Dòng thời gian</button>
     <button data-view="decisions">📌 Quyết định & hạn</button>
-    <button data-view="open">❓ Đang chờ <span>5</span></button>
-    <button data-view="assets">🖼 Thư viện <span>9</span></button>
+    <button data-view="open">❓ Đang chờ <span>6</span></button>
+    <button data-view="assets">🖼 Thư viện <span>11</span></button>
   </nav>
   <main id="main">
     <section class="view active" id="v-overview"></section>
@@ -133,7 +133,7 @@
     <section class="view" id="v-assets"></section>
   </main>
 </div>
-<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · 9 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 13:39 ngày 28/10/2026 · Tạo & tự cập nhật bởi Cono</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · 11 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 12:05 ngày 29/10/2026 · Tạo & tự cập nhật bởi Cono</div>
 
 <script>
 const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
@@ -175,14 +175,14 @@ const P = {
 const T = {
   t1:{icon:'🧭', name:'Tên & Concept', st:'done', stl:'Đã chốt', g:['g1'], owner:['chin','tinh'], deps:[], assets:['as1','as8','as9'],
     body:'“Global Citizens Day: The Heritage Odyssey” — Tính đề xuất, Chin chốt tối 25/10. Slogan trên thiết kế: “Kết nối văn hóa · Kiến tạo tương lai” / “Different Cultures · One World · Same Future”. Concept heritage xuyên suốt (văn hóa – di sản), lan sang cả thiết kế: cổng chào bớt hiện đại, gợi chất văn hóa.'},
-  t2:{icon:'💻', name:'Landing Page', st:'wip', stl:'Đang dựng — chờ đầu vào', g:['g2'], owner:['son'], deps:['t4','t5','t1'],
-    body:'Sơn đang dựng; nội dung tạm dạng “lorem” demo chờ người xịn. Cần adapt theo khu vực (Chin giao 28/10). Phải dùng đúng tên + concept đã chốt.',
-    extra:['Còn thiếu: timeline sự kiện, khách mời talkshow, sơ đồ gian hàng','Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
-  t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Luồng OK — chờ 1 quyết định', g:['g2'], owner:['son','minh'], deps:['t4'],
-    body:'Luồng hiện tại (đã chạy OK): guest nộp đề xuất KHÔNG cần đăng nhập → admin duyệt → 1 gian chỉ chốt 1 vị trí. Câu hỏi mở: có bắt đăng nhập không? (khuyến nghị: không, thêm 3 cơ chế nhẹ — xem mục Đang chờ).'},
-  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chốt trước 12:00 hôm nay', g:['g1'], owner:['tinh','chin'], deps:['t9'], assets:['as5','as6','as7','as8','as9'],
-    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating). Bản dựng chi tiết hiện có của Tính đang là phương án 64 gian (xem ảnh) — cần cập nhật theo chốt 40/25.',
-    extra:['Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','S landing page phải map đúng layout này (đầu vào bắt buộc của hệ thống)']},
+  t2:{icon:'💻', name:'Landing Page', st:'wip', stl:'Đã có timeline, khách mời, gian hàng — chờ layout chốt', g:['g2'], owner:['son'], deps:['t4','t5','t1'], assets:['as11'],
+    body:'Hero concept: “Việt Nam. Một dài di sản” — MỘT ĐÀI DI SẢN, Vietnam Roots / Global Mind. Cập nhật tối 28/10 (Sơn): đã thêm phần timeline sự kiện + khách mời; phần gian hàng đã lên — chủ gian đăng ký theo vị trí không cần đăng nhập, admin chốt đề xuất, vị trí đã chốt hiện màu trên sơ đồ. Vẫn chờ layout cuối của Tính (đang làm lại theo 2 option của Chin).',
+    extra:['Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
+  t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Đang vận hành — chờ layout + quyết định mail', g:['g2'], owner:['son','minh'], deps:['t4'], assets:['as10'],
+    body:'Luồng đã chốt (Sơn xác nhận 28/10 13:39): guest nộp đề xuất KHÔNG cần đăng nhập theo từng vị trí → admin duyệt → 1 vị trí 1 gian; vị trí đã chốt đổi màu trên sơ đồ, bấm trực tiếp lên mặt bằng để chọn. Sau khi xác nhận gian hàng, hệ thống gửi mail xác nhận cho chủ gian — hiện GỬI THỦ CÔNG; nếu muốn tự động, Sơn đề nghị được cấp quyền mail JCI (tối 28/10).'},
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chưa chốt — Tính đang lên lại theo 2 option', g:['g1'], owner:['tinh','chin'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10'],
+    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating). Tối 28/10 Tính xác nhận layout CHƯA chốt, đang làm lại theo 2 option Chin chia sẻ (“đang lên layout lại”).',
+    extra:['Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','Landing page + hệ thống chỉ map được sau khi layout chốt']},
   t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Des xong — chờ PD duyệt', g:['g1'], owner:['thu','tam','thuyanh'], deps:[],
     body:'Bản design hoàn thiện sáng 28/10 (Thanh Tâm). Anh Thư + Thủy Anh finalize, gửi PD (Trường) double-check. Nhóm COC sẽ adapt theo khu vực rồi đưa vào landing page.'},
   t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1'],
@@ -219,8 +219,10 @@ const DEADLINES = [
 const OPEN = [
   {q:'Guest đăng ký gian hàng có cần đăng nhập không?', meta:'Sơn → Minh · 11:32 ngày 28/10 (nhóm COC) · ✅ CẬP NHẬT 13:39: Sơn đồng ý “giữ luồng hiện tại” (không đăng nhập) — chờ anh gửi tin chốt chính thức',
    rec:'Phương án đã đề xuất và được Sơn gật đầu: KHÔNG cần đăng nhập. Bù lại: (1) form bắt buộc email + SĐT để liên hệ & lọc trùng; (2) gửi link xác nhận/theo dõi qua email để đơn vị xem trạng thái duyệt, sửa thông tin; (3) gian VIP (NTT sẵn có + debating) admin gán chỗ trực tiếp, không cho đăng ký công khai.'},
-  {q:'Timeline chính thức của sự kiện?', meta:'Sơn cần cho landing page · Chin nhận “đang nợ” · chưa thấy ở cả 2 nhóm', rec:'Cần hỏi lại ở nhóm lớn JCITL — đây là đầu vào bắt buộc của landing page.'},
-  {q:'Danh sách khách mời talkshow?', meta:'Sơn cần cho landing page · Chin “đi kiếm người xịn về”', rec:''},
+  {q:'Timeline chính thức của sự kiện?', meta:'✅ CẬP NHẬT 22:42 tối 28/10: Sơn đã thêm phần timeline sự kiện vào landing page', rec:''},
+  {q:'Danh sách khách mời talkshow?', meta:'✅ CẬP NHẬT 22:42 tối 28/10: Sơn đã thêm phần khách mời vào landing page', rec:''},
+  {q:'Quyền mail JCI để gửi mail xác nhận gian hàng tự động?', meta:'Sơn đề nghị 22:45 tối 28/10: hiện gửi mail thủ công sau khi xác nhận gian hàng; muốn tự động thì cần quyền vào mail JCI · Hanh hỏi luồng tự động khả thi không',
+   rec:'Cần ban tổ chức quyết: cấp quyền mail JCI cho hệ thống (Sơn) hay giữ gửi thủ công.'},
   {q:'Ngày diễn ra sự kiện cụ thể (tháng 11/2026)?', meta:'Quan sát: cả 2 nhóm chỉ nói “sự kiện tháng 11”', rec:''},
   {q:'Kết quả họp team tài trợ + tiến độ hồ sơ tài trợ bản des (Wigo)?', meta:'PD hẹn Anh Thư sắp lịch 27/10 · Anh Thư hỏi Thủy Anh sáng 27/10 · chưa thấy báo cáo', rec:''},
 ];
@@ -256,6 +258,7 @@ const TIMELINE = [
     {t:'12:49', g:'g2', who:'Minh', txt:'Chia sẻ link Knowledge Base (trang tổng hợp này) vào nhóm COC GCD 2026.'},
     {t:'13:01', g:'g2', who:'Minh (🤖 Trợ lý AI)', txt:'Gửi phương án: guest đăng ký giữ không-đăng-nhập; form bắt buộc email + SĐT; gửi link xác nhận/theo dõi qua email; gian VIP do admin gán trực tiếp trên dashboard.'},
     {t:'13:39', g:'g2', who:'Đường Minh Sơn', txt:'“Oke rồi anh nhé, thế em sẽ giữ luồng hiện tại” — Sơn đồng ý giữ luồng không đăng nhập.'},
+    {t:'22:42–22:51', g:'g2', who:'Sơn ↔ Tính · Hanh (trên nhóm JCITL)', txt:'Sơn công bố trên nhóm lớn: landing page ĐÃ có timeline sự kiện + khách mời; phần gian hàng đã lên (đăng ký theo vị trí không cần đăng nhập, admin chốt, hiển thị màu trên sơ đồ, quản trị theo vị trí B01…). Chia sẻ 2 ảnh: mặt bằng hệ thống + hero LP “Việt Nam. Một dài di sản”. Mail xác nhận gian hàng hiện gửi thủ công — đề nghị quyền mail JCI nếu muốn tự động. Tính xác nhận layout chưa chốt, đang làm lại theo 2 option của Chin.'},
   ]},
 ];
 
@@ -278,6 +281,10 @@ const ASSETS = [
    desc:'Cổng hơi (inflatable) và cổng formex, đều mang slogan “GLOBAL CITIZENS DAY 2026 — Kết nối văn hóa · Kiến tạo tương lai”, gốm yếu tố văn hóa (Chùa Thần, áo dài) + công nghệ (robot, trái đất). Chin muốn nghiêng về hướng heritage, bớt hiện đại.'},
   {id:'as9', file:'2026-10-27-jcitl-tinh-duong-di-trai-nghiem-1554.jpg', title:'Concept phố trải nghiệm gian hàng', who:'Lê Văn Tính', when:'27/10 · 15:54', topics:['t10','t4','t1'],
    desc:'Render concept làng trải nghiệm: nặn tò he, vẽ mặt nạ, công nghệ 3D, âm nhạc truyền thống, cờ các quốc gia; thông điệp “Different Cultures · One World · Same Future”.'},
+  {id:'as10', file:'2026-10-28-jcitl-son-he-thong-gian-hang-mat-bang-2243.jpg', title:'Hệ thống gian hàng: mặt bằng tương tác + quản trị theo vị trí', who:'Đường Minh Sơn', when:'28/10 · 22:43', topics:['t3','t4','t2'],
+   desc:'Ảnh hệ thống do Sơn chia sẻ: mặt bằng dự kiến 40 vị trí tương tác (backdrop check-in, 360° không gian kết nối ở giữa, 3 khu ROOTS, lối vào/ra) với 3 trạng thái màu — đang nhận đề xuất / có đề xuất · vẫn nhận thêm / đã xác nhận; bên phải là panel quản trị theo vị trí (B01: hồ sơ tại ô, chờ duyệt, tải lại). Bấm trực tiếp lên mặt bằng để chọn vị trí.'},
+  {id:'as11', file:'2026-10-28-jcitl-son-landing-page-menu-gian-hang-2243.jpg', title:'Landing page: hero “Việt Nam. Một dài di sản” + menu Gian hàng', who:'Đường Minh Sơn', when:'28/10 · 22:43', topics:['t2','t1'],
+   desc:'Ảnh landing page GCD 2026: hero “Việt Nam. Một dài di sản” với concept “MỘT ĐÀI DI SẢN — Vietnam Roots, Global Mind”, tagline “Hiểu cội nguồn. Vững bản lĩnh. Mở tư duy. Chủ động kiến tạo tương lai.”, nút “Bước vào hành trình”; mũi tên đỏ chỉ menu “Gian hàng” vừa được gắn (“Nhấn vào đây để vào phần gian hàng”).'},
 ];
 const LINKS_EXTRA = [
   {title:'Fanpage Đoàn Thái Cúc Hương (giấy dó)', url:'https://www.facebook.com/doan.thai.cuc.huong.artsncrafts', who:'Chin', when:'28/10 · 09:52', note:'Vendor gợi ý cho mảng heritage / trải nghiệm văn hóa.'},
@@ -296,7 +303,7 @@ function renderOverview(){
     <div class="stat"><b>14</b><span>người được nhắc</span></div>
     <div class="stat"><b>10</b><span>chủ đề</span></div>
     <div class="stat"><b>4</b><span>mốc hạn</span></div>
-    <div class="stat"><b>5</b><span>việc đang chờ</span></div>
+    <div class="stat"><b>6</b><span>việc đang chờ</span></div>
   </div>
 
   <div class="card">
