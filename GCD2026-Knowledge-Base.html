@@ -121,7 +121,7 @@
     <button data-view="timeline">🕒 Dòng thời gian</button>
     <button data-view="decisions">📌 Quyết định & hạn</button>
     <button data-view="open">❓ Đang chờ <span>6</span></button>
-    <button data-view="assets">🖼 Thư viện <span>11</span></button>
+    <button data-view="assets">🖼 Thư viện <span>14</span></button>
   </nav>
   <main id="main">
     <section class="view active" id="v-overview"></section>
@@ -133,7 +133,7 @@
     <section class="view" id="v-assets"></section>
   </main>
 </div>
-<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23–28/10/2026) · 11 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 12:05 ngày 29/10/2026 · Tạo & tự cập nhật bởi Cono</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23/10–30/10/2026) · 14 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 20:30 ngày 30/10/2026 · Tạo & tự cập nhật bởi Cono</div>
 
 <script>
 const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
@@ -180,9 +180,9 @@ const T = {
     extra:['Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
   t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Đang vận hành — chờ layout + quyết định mail', g:['g2'], owner:['son','minh'], deps:['t4'], assets:['as10'],
     body:'Luồng đã chốt (Sơn xác nhận 28/10 13:39): guest nộp đề xuất KHÔNG cần đăng nhập theo từng vị trí → admin duyệt → 1 vị trí 1 gian; vị trí đã chốt đổi màu trên sơ đồ, bấm trực tiếp lên mặt bằng để chọn. Sau khi xác nhận gian hàng, hệ thống gửi mail xác nhận cho chủ gian — hiện GỬI THỦ CÔNG; nếu muốn tự động, Sơn đề nghị được cấp quyền mail JCI (tối 28/10).'},
-  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wait', stl:'Chưa chốt — Tính đang lên lại theo 2 option', g:['g1'], owner:['tinh','chin'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10'],
-    body:'Tính thiết kế, Chin quyết. 2 phương án: 40 gian (chính) / 25 gian (backup) — trước 18/11 đủ NTT thì chạy 40, không thì chạy 25; mọi phương án trong dự trù ngân sách. 6 tiểu khu: quà/voucher sinh viên · Roots of Knowledge / Nature / … · VIP 1 & VIP 2 (NTT sẵn có + từ debating). Tối 28/10 Tính xác nhận layout CHƯA chốt, đang làm lại theo 2 option Chin chia sẻ (“đang lên layout lại”).',
-    extra:['Chin khen cổng 3D đẹp nhưng muốn hướng heritage, bớt hại điện','Landing page + hệ thống chỉ map được sau khi layout chốt']},
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wip', stl:'Đang hoàn thiện theo chỉ đạo PD — hạn 30/10', g:['g1'], owner:['tinh','chin','dat'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10','as12','as13'],
+    body:'Tối 29/10: Hanh gửi bản hoàn thiện (25 gian chính + mở rộng 40, 6 tiểu khu G01–G24, ≤500m²); team Đạt gửi option 40 booth (3 điểm Roots, cam 360 giữa, lối đi một chiều). Tính phản biện: cổng vào + cửa hội trường đang sai vị trí theo Google Maps; cần thống nhất vị trí giữa 2 option để gian đã chọn không bị ảnh hưởng; 15 gian backup đặt vị trí ít tiếp cận hơn; cần quy trình trải nghiệm khép kín (hiện khách sẽ đi tạt vào, skip gian hàng & khu BTC). 23:58 PD chỉ đạo: LDir Đạt + team xem lại ý kiến Tính, layout theo thực tế không màu mè, hoàn thiện TRONG NGÀY 30/10 (meet nếu cần) — gồm cả backdrop, camera 360, cổng, booth, standee, khung gian hàng. Sáng 30/10 Chin ủy quyền: “nội dung team trải nghiệm đề xuất… LDir giúp chị”.',
+    extra:['“Chân gà” = cách gọi đùa của Chin cho phân khu theo 3 chương trình Roots','Landing page + hệ thống chỉ map được sau khi layout chốt']},
   t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Des xong — chờ PD duyệt', g:['g1'], owner:['thu','tam','thuyanh'], deps:[],
     body:'Bản design hoàn thiện sáng 28/10 (Thanh Tâm). Anh Thư + Thủy Anh finalize, gửi PD (Trường) double-check. Nhóm COC sẽ adapt theo khu vực rồi đưa vào landing page.'},
   t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1'],
@@ -210,7 +210,8 @@ const DECISIONS = [
 ];
 
 const DEADLINES = [
-  {date:'28/10 · 12:00', lvl:'urgent', label:'Chốt phương án layout gian hàng cuối cùng', owner:'Chin ↔ Lê Văn Tính'},
+  {date:'30/10 (hôm nay)', lvl:'urgent', label:'Hoàn thiện layout + toàn bộ hạng mục (backdrop, camera 360, cổng, booth, standee, khung gian hàng…) theo chỉ đạo PD', owner:'LDir Đạt + team, xem lại ý kiến Tính · meet nếu cần'},
+  {date:'T7 · 31/10 · 14:00–14:30', lvl:'high', label:'Khảo sát địa điểm tổ chức (dời từ 15:00 lên sớm) — tiện khảo giá nhà thầu luôn', owner:'Chin + LDir Đạt + PD Trường; Tính, Hanh tham gia'},
   {date:'T6 · 30/10 · 12:30–13:30', lvl:'high', label:'Họp khớp: landing page / sơ đồ gian hàng / proposal / truyền thông / trải nghiệm gian hàng', owner:'Nhóm COC · Thanh Tâm báo lịch với PD/LP + team trải nghiệm & setup'},
   {date:'Trước 18/11', lvl:'mid', label:'Quyết định chạy phương án 40 hay 25 gian', owner:'Ban tổ chức'},
   {date:'Tháng 11/2026', lvl:'mid', label:'Sự kiện diễn ra (ngày chính xác chưa được công bố ở cả 2 nhóm)', owner:'Toàn team'},
@@ -248,7 +249,14 @@ const TIMELINE = [
     {t:'15:07–15:54', g:'g1', who:'Tính · Trường · Đinh Hạnh · Đạt', txt:'Trình phương án gian hàng + cổng chào (hơi 6–10tr, formex 8,5–12,5tr, booth 360 ~4–4,5tr); Trường góp ý thêm backdrop, photo booth, camera 360; chia sẻ triết lý trải nghiệm người tham dự; Đinh Hạnh: “sáng tạo trong định mức”.'},
     {t:'16:03', g:'g1', who:'Trường', txt:'Lệnh finalize Proposal (Anh Thư, Thanh Tâm, Thủy Anh) — xong gửi PD double-check.'},
   ]},
-  {day:'28/10/2026 (hôm nay) — Quyết định layout & kết nối 2 nhóm', evs:[
+  {day:'29–30/10/2026 — Layout 2 option, chỉ đạo của PD, chuẩn bị khảo sát', evs:[
+    {t:'29/10 21:01', g:'g1', who:'Trường', txt:'Nhắc Đạt: “chỗ gian hàng chốt layout chưa? Team hậu cần báo lại nhé”.'},
+    {t:'29/10 22:31–22:33', g:'g1', who:'Hanh · Đạt', txt:'Hanh gửi bản hoàn thiện layout (25 gian + mở rộng 40, 6 tiểu khu G01–G24, ≤500m²); team Đạt gửi “2 option” (option 40 booth, lối đi một chiều, 3 điểm Roots) — mời cả nhóm góp ý.'},
+    {t:'29/10 22:32–23:48', g:'g1', who:'Lê Văn Tính', txt:'Feedback dài: cổng vào + cửa hội trường sai vị trí theo Google Maps; thống nhất vị trí giữa 2 option; 15 gian backup đặt chỗ ít tiếp cận hơn; cần quy trình trải nghiệm khép kín (khách đang có thể “skip” hết gian hàng). Bức xúc feedback chưa được áp dụng.'},
+    {t:'29/10 23:58', g:'g1', who:'Phạm Văn Trường (PD)', txt:'Chỉ đạo: LDir Đạt + team xem lại, xem ý kiến Tính; layout theo thực tế, không màu mè; hoàn thiện TRONG NGÀY 30/10 — không chỉ layout mà toàn bộ hạng mục (backdrop, camera 360, cổng, booth, standee, khung gian hàng…).'},
+    {t:'30/10 09:52–12:34', g:'g1', who:'Chin · Trường · Tính', txt:'Chin ủy quyền LDir Đạt giúp chốt (nội dung team trải nghiệm đã báo 3 lần); đề xuất khảo sát địa điểm “chiều mai 3pm” → chuyển sang 31/10 lúc 14:00–14:30 (Chin có lịch buổi sáng); Tính đề nghị sáng nhưng theo lịch chung; Tính gửi post FB tìm nhà thầu thi công “tiện khảo giá”.'},
+  ]},
+  {day:'28/10/2026 — Quyết định layout & kết nối 2 nhóm', evs:[
     {t:'09:39', g:'g1', who:'Chin', txt:'Xin lỗi vì 26–27/10 nghỉ ốm, không nghe máy.'},
     {t:'09:42–09:54', g:'g1', who:'Chin ↔ Tính', txt:'Quyết định layout: 2 phương án 40/25 gian, 6 tiểu khu (quà/voucher · Roots of Knowledge/Nature/… · VIP1/VIP2); chốt trước 12:00; cổng 3D đẹp nhưng muốn heritage; gửi link vendor giấy dó (Đoàn Thái Cúc Hương).'},
     {t:'11:03–11:05', g:'g1', who:'Anh Thư · Thanh Tâm', txt:'Des proposal xong, đã gửi.'},
@@ -285,6 +293,12 @@ const ASSETS = [
    desc:'Ảnh hệ thống do Sơn chia sẻ: mặt bằng dự kiến 40 vị trí tương tác (backdrop check-in, 360° không gian kết nối ở giữa, 3 khu ROOTS, lối vào/ra) với 3 trạng thái màu — đang nhận đề xuất / có đề xuất · vẫn nhận thêm / đã xác nhận; bên phải là panel quản trị theo vị trí (B01: hồ sơ tại ô, chờ duyệt, tải lại). Bấm trực tiếp lên mặt bằng để chọn vị trí.'},
   {id:'as11', file:'2026-10-28-jcitl-son-landing-page-menu-gian-hang-2243.jpg', title:'Landing page: hero “Việt Nam. Một dài di sản” + menu Gian hàng', who:'Đường Minh Sơn', when:'28/10 · 22:43', topics:['t2','t1'],
    desc:'Ảnh landing page GCD 2026: hero “Việt Nam. Một dài di sản” với concept “MỘT ĐÀI DI SẢN — Vietnam Roots, Global Mind”, tagline “Hiểu cội nguồn. Vững bản lĩnh. Mở tư duy. Chủ động kiến tạo tương lai.”, nút “Bước vào hành trình”; mũi tên đỏ chỉ menu “Gian hàng” vừa được gắn (“Nhấn vào đây để vào phần gian hàng”).'},
+  {id:'as12', file:'2026-10-29-jcitl-hanh-layout-hoan-thien-2231.jpg', title:'Bản hoàn thiện layout tổng thể (25 gian + mở rộng 40)', who:'Nguyễn Quang Hanh', when:'29/10 · 22:31', topics:['t4','t9'],
+   desc:'Bản layout tổng thể 25 gian: 70m × ~63m, 6 tiểu khu G01–G24 (TK1: NTTC & VIP · TK2: các NTT khác · TK3: BTC · TK4–TK6: cho xác nhận nội dung), “Con đường di sản” nối backdrop check-in → các khu, cổng chính; kèm phối cảnh 3D, góc nhìn trải nghiệm khách, phương án mở rộng 40 gian (+15 gian dự phòng) và bảng phân bổ chức năng — tổng ≤ 500 m². Slogan: “Kết nối di sản – Lan tỏa giá trị Việt”.'},
+  {id:'as13', file:'2026-10-29-jcitl-dat-option-layout-2232.jpg', title:'Option layout 40 booth (team Đạt)', who:'Quang Đạt', when:'29/10 · 22:32', topics:['t4','t9'],
+   desc:'“LAYOUT SỰ KIỆN — 40 BOOTH GIAN HÀNG | 500 m²”: 40 booth (~3m²/booth) quanh chu vi, 3 điểm ROOTS (chân ga hồng vàng) giữa sân, CAM 360° trung tâm, backdrop check-in + khu lễ phép chụp ảnh ở lối vào (góc trên, không che khuất), hội trường bên trái, lối đi tham quan MỘT CHIỀU; tổng 500 m² theo hiện trạng thực tế. Đạt: “2 option team gửi cả nhà… cần bổ sung idea gì thì nhắn team”.'},
+  {id:'as14', file:'2026-10-30-jcitl-tinh-anh-khao-sat-1144.jpg', title:'Post FB tìm nhà thầu thi công (khảo giá)', who:'Lê Văn Tính', when:'30/10 · 11:44', topics:['t9','t4','t6'],
+   desc:'Ảnh chụp post Facebook (group Cộng đồng Tổ chức Sự kiện): cần đơn vị thi công giải chạy bộ — cổng chào, dựng gian hàng, backdrop, ô dù… theo thiết kế BTC, phía Bắc, xuất được VAT. Tính gửi kèm “Tiện khảo giá luôn” — dùng để khảo giá nhà thầu cho các hạng mục GCD.'},
 ];
 const LINKS_EXTRA = [
   {title:'Fanpage Đoàn Thái Cúc Hương (giấy dó)', url:'https://www.facebook.com/doan.thai.cuc.huong.artsncrafts', who:'Chin', when:'28/10 · 09:52', note:'Vendor gợi ý cho mảng heritage / trải nghiệm văn hóa.'},
@@ -302,7 +316,7 @@ function renderOverview(){
     <div class="stat"><b>31 + 5</b><span>thành viên</span></div>
     <div class="stat"><b>14</b><span>người được nhắc</span></div>
     <div class="stat"><b>10</b><span>chủ đề</span></div>
-    <div class="stat"><b>4</b><span>mốc hạn</span></div>
+    <div class="stat"><b>5</b><span>mốc hạn</span></div>
     <div class="stat"><b>6</b><span>việc đang chờ</span></div>
   </div>
 
