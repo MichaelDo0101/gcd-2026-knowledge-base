@@ -404,9 +404,11 @@ function renderTopics(){
 }
 
 function renderTimeline(){
-  $('#v-timeline').innerHTML = '<h2 class="sec">🕒 Dòng thời gian (điểm mốc)</h2><div class="tl">' +
-    TIMELINE.map(d => `<div class="day">📅 ${d.day}</div>` +
-      d.evs.map(e => `<div class="ev ${e.g}"><span class="t">${e.t}</span>${GTAG(e.g)} <span class="who">${e.who}</span><div style="margin-top:3px">${e.txt}</div></div>`).join('')
+  const parseDay = s => { const m = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? new Date(+m[3], +m[2]-1, +m[1]).getTime() : 0; };
+  const days = [...TIMELINE].sort((a,b) => parseDay(b.day) - parseDay(a.day));
+  $('#v-timeline').innerHTML = '<h2 class="sec">🕒 Dòng thời gian (mới nhất trước)</h2><div style="font-size:12px;color:var(--mut);margin:-4px 0 8px">Sắp xếp từ gần nhất đến xa nhất.</div><div class="tl">' +
+    days.map(d => `<div class="day">📅 ${d.day}</div>` +
+      [...d.evs].reverse().map(e => `<div class="ev ${e.g}"><span class="t">${e.t}</span>${GTAG(e.g)} <span class="who">${e.who}</span><div style="margin-top:3px">${e.txt}</div></div>`).join('')
     ).join('') + '</div>';
 }
 
