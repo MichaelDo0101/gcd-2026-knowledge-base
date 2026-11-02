@@ -121,7 +121,7 @@
     <button data-view="timeline">🕒 Dòng thời gian</button>
     <button data-view="decisions">📌 Quyết định & hạn</button>
     <button data-view="open">❓ Đang chờ <span>6</span></button>
-    <button data-view="assets">🖼 Thư viện <span>16</span></button>
+    <button data-view="assets">🖼 Thư viện <span>19</span></button>
   </nav>
   <main id="main">
     <section class="view active" id="v-overview"></section>
@@ -133,7 +133,7 @@
     <section class="view" id="v-assets"></section>
   </main>
 </div>
-<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23/10–01/11/2026) · 16 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 20:10 ngày 01/11/2026 · Tạo & tự cập nhật bởi Cono</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23/10–02/11/2026) · 19 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 20:45 ngày 02/11/2026 · Tạo & tự cập nhật bởi Cono</div>
 
 <script>
 const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
@@ -180,21 +180,21 @@ const T = {
     extra:['Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
   t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Đang vận hành — chờ layout + quyết định mail', g:['g2'], owner:['son','minh'], deps:['t4'], assets:['as10'],
     body:'Luồng đã chốt (Sơn xác nhận 28/10 13:39): guest nộp đề xuất KHÔNG cần đăng nhập theo từng vị trí → admin duyệt → 1 vị trí 1 gian; vị trí đã chốt đổi màu trên sơ đồ, bấm trực tiếp lên mặt bằng để chọn. Sau khi xác nhận gian hàng, hệ thống gửi mail xác nhận cho chủ gian — hiện GỬI THỦ CÔNG; nếu muốn tự động, Sơn đề nghị được cấp quyền mail JCI (tối 28/10).'},
-  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'wip', stl:'Đang hoàn thiện theo chỉ đạo PD — hạn 30/10', g:['g1'], owner:['tinh','chin','dat'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10','as12','as13'],
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'done', stl:'Đã chốt 02/11 — Sơn đã setup demo gian hàng', g:['g1'], owner:['tinh','chin','dat'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10','as12','as13','as19'],
     body:'Tối 29/10: Hanh gửi bản hoàn thiện (25 gian chính + mở rộng 40, 6 tiểu khu G01–G24, ≤500m²); team Đạt gửi option 40 booth (3 điểm Roots, cam 360 giữa, lối đi một chiều). Tính phản biện: cổng vào + cửa hội trường đang sai vị trí theo Google Maps; cần thống nhất vị trí giữa 2 option để gian đã chọn không bị ảnh hưởng; 15 gian backup đặt vị trí ít tiếp cận hơn; cần quy trình trải nghiệm khép kín (hiện khách sẽ đi tạt vào, skip gian hàng & khu BTC). 23:58 PD chỉ đạo: LDir Đạt + team xem lại ý kiến Tính, layout theo thực tế không màu mè, hoàn thiện TRONG NGÀY 30/10 (meet nếu cần) — gồm cả backdrop, camera 360, cổng, booth, standee, khung gian hàng. Sáng 30/10 Chin ủy quyền: “nội dung team trải nghiệm đề xuất… LDir giúp chị”.',
-    extra:['“Chân gà” = cách gọi đùa của Chin cho phân khu theo 3 chương trình Roots — đến 31/10 Tính vẫn hỏi tên tiểu khu thứ 3 (“roots of …”) chưa có tên cuối','Đến chiều 31/10 chưa thấy thông báo hoàn tất layout trên nhóm dù hạn của PD là 30/10','Landing page + hệ thống chỉ map được sau khi layout chốt']},
+    extra:['02/11: layout chốt sáng nay (Chin xác nhận) — Sơn setup demo gian hàng xong theo ý tưởng LDir Đạt; Đinh Hạnh góp ý quay ngang ra ngoài, không úp lưng vào nhau; PD demo AI 3D (bản Premium) cho LDir Đạt tham khảo; Tính gửi booth OPPO làm mẫu (as19)','“Chân gà” = cách gọi đùa của Chin cho phân khu theo 3 chương trình Roots — tên tiểu khu thứ 3 (“roots of …”) vẫn chưa có tên cuối','Landing page + hệ thống map được với layout chốt này']},
   t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Bản kêu gọi NTT sơ bộ đã có — đang làm bản đối tác', g:['g1'], owner:['thu','tam','thuyanh'], deps:[], assets:[],
     body:'01/11: PD gửi link bản kêu gọi NTT sơ bộ trên Canva (xem mục Tài nguyên) — cả nhóm góp ý; sau khi team chốt gian hàng sẽ bổ sung hạng mục gian hàng vào proposal. Đồng thời PD yêu cầu thêm 1 bản “Giới thiệu về chương trình” để làm việc với đối tác/đồng hành (Đoàn, các cộng đồng khác): bỏ hết thông tin tài trợ, có thể thêm trang đề xuất cách các đơn vị đồng hành — Anh Thư xử lý. Lịch sử: bản des xong 28/10 (Thanh Tâm), cập nhật 31/10.'},
-  t6:{icon:'🤝', name:'Tài trợ (NTT)', st:'wip', stl:'Đang triển khai — kêu gọi bằng proposal sơ bộ', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1'],
-    body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP. 01/11: bắt đầu kêu gọi bằng proposal sơ bộ (Canva); PD yêu cầu Đạt + Chin + Huế chốt mức chi phí đầu vào gói gian hàng để chốt gói kêu gọi — nhóm yếu tố di sản/văn hóa để mức phí phù hợp, dễ kêu gọi.'},
-  t7:{icon:'📣', name:'Truyền thông', st:'wait', stl:'Chờ sau tiếp xúc NTT', g:['g1'], owner:['thuyanh'], deps:['t6'],
-    body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”.'},
+  t6:{icon:'🤝', name:'Tài trợ & Đối tác', st:'wip', stl:'Đang kêu gọi — có lead đối tác trải nghiệm văn hóa', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1','as17','as18'],
+    body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP. 01–02/11: lead đối tác mới MAI – Open Art (founder Trần Mai Thanh — giáo dục nghệ thuật gắn di sản, tranh dân gian, tò he, múa rối) chủ động hỏi hợp tác trải nghiệm văn hóa, Chin hẹn kết nối (as17); lịch làm việc 9h sáng 03/11 tại Bộ VH-TT-DL (as18) — PD + LP Hùng Vũ đi, Chin trợ tí, Linh +1; gặp xong chốt timeline là up truyền thông luôn. 01/11: bắt đầu kêu gọi bằng proposal sơ bộ (Canva); PD yêu cầu Đạt + Chin + Huế chốt mức chi phí đầu vào gói gian hàng để chốt gói kêu gọi — nhóm yếu tố di sản/văn hóa để mức phí phù hợp, dễ kêu gọi.'},
+  t7:{icon:'📣', name:'Truyền thông', st:'wip', stl:'Chờ chốt timeline (3/11) để bắn tin — có ý tưởng thử thách nhảy viral', g:['g1'], owner:['thuyanh'], deps:['t6'],
+    body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”. 02/11: ý tưởng lớn được PD hé mở — THỬ THÁCH NHẢY viral (JCI Quốc tế từng làm): TikTok gắn hashtag, chấm theo view + xác định đúng địa danh, giải thưởng đủ hấp dẫn; Tính đề xuất slogan “Cùng hưởng ứng ngày hội công dân toàn cầu” + nhạc nền chủ đề năm nay. PD: truyền thông sáng tạo phá cách, không đi lối mòn — thư mời cũng vậy. Trần Nguyên Hạnh: gặp Đoàn 3/11 chốt timeline xong là up truyền thông luôn.'},
   t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'done', stl:'Đã khảo sát 31/10 — địa điểm: 58 NCT', g:['g1'], owner:['qhanh','dat'], deps:[], assets:['as2','as3','as4','as15'],
     body:'Địa điểm tổ chức: 58 Nguyễn Chí Thanh (đơn vị chủ quản là học viện). Khảo sát thực tế chiều 31/10 (14:30–15:30): Chin + Tính (đi muộn 30p) + Đạt; PD vắng (lịch GA chapter bạn) — “Team khảo sát và chốt PA nhé”. Đạt là đầu mối làm việc với học viện (cuối tuần cần gặp thì nhắn Đạt để gọi họ sớm). Hội trường: setup đẹp nhất theo hình vuông (backup 3 cây nến); khách vào qua cổng chúa Láng, cách chỗ để xe ~50m, sau các tòa mới xây.'},
   t9:{icon:'💰', name:'Ngân sách & định mức', st:'wip', stl:'Đang lập dự trù', g:['g1'], owner:['dat','dinhhanh'], deps:[], assets:['as7','as8'],
-    body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
+    body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. 02/11: Chin nhắc CHƯA có final bản báo giá setup — yêu cầu team (Đạt) đưa deadline để Chin làm việc tiếp với các bên; PD yêu cầu chốt chi phí đầu vào gói gian hàng để kêu gọi (nhóm di sản/văn hóa mức phí dễ kêu gọi). Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
   t10:{icon:'✨', name:'Trải nghiệm gian hàng & sự kiện', st:'info', stl:'Định hướng — khớp tại họp t6', g:['g1'], owner:['truong','chin','tam'], deps:['t2','t3','t4'], assets:['as9','as6'],
-    body:'Triết lý của Trường: hành trình người tham dự = truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình. Sự kiện cần điểm nhấn khác biệt, tinh tế, truyền tải được thông điệp; tối ưu nguồn lực, kêu gọi nguồn lực ngoài khi được.'},
+    body:'Triết lý của Trường: hành trình người tham dự = truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình. Sự kiện cần điểm nhấn khác biệt, tinh tế, truyền tải được thông điệp; tối ưu nguồn lực. 02/11: xuất hiện hướng minigame DI SẢN (Tính gửi file bảng chấm điểm minigame_di_san.xlsx; bàn luận vui về “chùa online” có slot, thích khách chốt, khóa dép…) kết hợp thử thách nhảy viral (xem t7). lực, kêu gọi nguồn lực ngoài khi được.'},
 };
 
 const DECISIONS = [
@@ -210,10 +210,11 @@ const DECISIONS = [
 ];
 
 const DEADLINES = [
-  {date:'01/11 (hôm nay)', lvl:'urgent', label:'Đạt cập nhật phương án sau khảo sát + team chốt chi phí đầu vào gói gian hàng để kêu gọi NTT', owner:'LDir Đạt · cùng Chin + Thanh Huế · PD nhắc trực tiếp'},
+  {date:'T3 · 03/11 · 09:00 (mai)', lvl:'urgent', label:'Làm việc với bên Đoàn Bộ VH-TT-DL — chốt timeline; chốt xong là up truyền thông luôn', owner:'PD + LP Hùng Vũ đi · Chin trợ tí · Đỗ Diệu Linh +1 · ảnh as18'},
+  {date:'Sắp tới', lvl:'high', label:'Final bản báo giá setup (Chin nhắc team đưa deadline để làm việc với các bên)', owner:'LDir Đạt + team → Chin'},
   {date:'Đang làm', lvl:'high', label:'Bản “Giới thiệu về chương trình” cho đối tác/đồng hành (bỏ thông tin tài trợ + trang đề xuất đơn vị đồng hành)', owner:'Anh Thư'},
   {date:'31/10 · 09:27 →', lvl:'mid', label:'✅ Đã có Proposal kêu gọi NTT sơ bộ (Canva) — chờ góp ý + bổ sung hạng mục gian hàng khi chốt xong', owner:'PD công bố · cả nhóm góp ý'},
-  {date:'30/10 (đã qua hạn)', lvl:'wait', label:'Hoàn thiện layout + toàn bộ hạng mục theo chỉ đạo PD — chưa thấy thông báo hoàn tất trên nhóm', owner:'LDir Đạt + team'},
+  {date:'02/11 · sáng', lvl:'mid', label:'✅ Layout đã chốt + Sơn setup demo gian hàng theo ý tưởng LDir Đạt (PD demo AI 3D)', owner:'Tính + Sơn + Đạt'},
   {date:'T7 · 31/10 · 14:00–14:30', lvl:'high', label:'✅ Đã diễn ra: khảo sát địa điểm 58 NCT — team tự chốt phương án', owner:'Chin + Tính + Đạt (PD vắng) · ảnh as15'},
   {date:'Trước 18/11', lvl:'mid', label:'Quyết định chạy phương án 40 hay 25 gian', owner:'Ban tổ chức'},
   {date:'Tháng 11/2026', lvl:'mid', label:'Sự kiện diễn ra (ngày chính xác chưa được công bố ở cả 2 nhóm)', owner:'Toàn team'},
@@ -250,6 +251,14 @@ const TIMELINE = [
     {t:'12:21–12:56', g:'g1', who:'Tính · Hanh', txt:'Trao đổi hội trường: setup hình vuông đẹp nhất / 3 cây nến; cổng chúa Láng; ~50m từ chỗ để xe.'},
     {t:'15:07–15:54', g:'g1', who:'Tính · Trường · Đinh Hạnh · Đạt', txt:'Trình phương án gian hàng + cổng chào (hơi 6–10tr, formex 8,5–12,5tr, booth 360 ~4–4,5tr); Trường góp ý thêm backdrop, photo booth, camera 360; chia sẻ triết lý trải nghiệm người tham dự; Đinh Hạnh: “sáng tạo trong định mức”.'},
     {t:'16:03', g:'g1', who:'Trường', txt:'Lệnh finalize Proposal (Anh Thư, Thanh Tâm, Thủy Anh) — xong gửi PD double-check.'},
+  ]},
+  {day:'02/11/2026 — Chốt layout, minigame di sản & thử thách nhảy viral', evs:[
+    {t:'13:34–14:11', g:'g1', who:'Đinh Hạnh · Trường · Tính · Đạt · Hanh', txt:'Đinh Hạnh góp ý gian hàng nên quay ngang ra ngoài, không úp lưng vào nhau; PD demo AI 3D (bản Premium) cho LDir Đạt tham khảo — Đạt: “Đẹp rùi anh ạ, triển khai đc rùi”.'},
+    {t:'14:31–15:04', g:'g1', who:'Chin · Hùng Vũ · Đỗ Diệu Linh · Trần Nguyên Hạnh', txt:'Chuẩn bị lịch 9h sáng mai (3/11) làm việc với bên Đoàn Bộ VH-TT-DL (PD + LP Hùng Vũ đi, Chin trợ tí, Linh +1); Hạnh (truyền thông): chốt timeline xong là up truyền thông luôn. Chin nhắc: chưa có final bản báo giá setup — xin deadline. Xác nhận layout chốt sáng nay + Sơn setup demo xong.'},
+    {t:'15:01', g:'g1', who:'Lê Văn Tính', txt:'Gửi ảnh booth OPPO Reno14 làm mẫu tham khảo (mặt bàn U + counter + LED) — “Anh chị có thể cân nhắc 👉👈” (as19).'},
+    {t:'16:16–16:22', g:'g1', who:'Phạm Văn Trường · Lê Văn Tính', txt:'Ý tưởng THỬ THÁCH NHẢY viral (JCI Quốc tế từng làm): TikTok gắn hashtag, chấm theo view + đúng địa danh, giải thưởng hấp dẫn; Tính đề xuất slogan “Cùng hưởng ứng ngày hội công dân toàn cầu” + nhạc nền chủ đề năm nay; PD: sáng tạo phá cách, không lối mòn — thư mời cũng vậy.'},
+    {t:'16:35–17:20', g:'g1', who:'Lê Văn Tính · Thanh Huế', txt:'Tính gửi file bảng chấm điểm minigame_di_san.xlsx (61KB); Huế gửi folder Google Drive cho cả nhóm theo yêu cầu PD; Chin khen “làm file là nét căng, cứ thế là triển được”.'},
+    {t:'18:18', g:'g1', who:'Phạm Văn Trường', txt:'“Xem chỗ gian hàng rồi triển khai đi nhé @Lê Văn Tính”.'},
   ]},
   {day:'01/11/2026 — Proposal sơ bộ lên sóng & chốt gói gian hàng', evs:[
     {t:'09:24', g:'g1', who:'Phạm Văn Trường', txt:'Nhắc Đạt: “Nghĩ xong chưa LDir ơi :))” — yêu cầu cập nhật kết quả khảo sát và chốt phương án trong ngày.'},
@@ -314,8 +323,15 @@ const ASSETS = [
    desc:'Ảnh thực tế buổi khảo sát địa điểm tổ chức: tòa nhà gạch tròn mang logo đoàn thể phía trên cửa chính, kèm khối nhà cao phía sau. Buổi khảo sát chiều 31/10 có Chin, Tính, Đạt (PD vắng — team tự khảo sát và chốt phương án).'},
   {id:'as16', file:'2026-11-01-jcitl-lam-viec-tai-qua-che.jpg', title:'Ảnh làm việc tại quán chè (Mixue)', who:'Quang Đạt', when:'01/11 · sáng', topics:['t4','t8'],
    desc:'Ảnh hai thành viên vừa làm việc vừa uống chè tại quán (sổ tay + điện thoại) — gửi trong chuỗi trả lời đùa của PD “Nghĩ xong chưa LDir ơi :))” sau buổi khảo sát 31/10 (PD hứa “ăn chè gửi bill PD mời”).'},
+  {id:'as17', file:'2026-11-01-coc-chin-gap-doi-tac-2233.jpg', title:'Lead đối tác: MAI – Open Art (comment FB)', who:'Chin', when:'01/11 · 22:33', topics:['t6','t1','t10'],
+   desc:'Ảnh chụp comment Facebook: Trần Mai Thanh — founder MAI – Open Art Hà Nội (giáo dục nghệ thuật gắn văn hóa, lịch sử, di sản; kết nối nghệ nhân tranh dân gian, tò he, múa rối, đồ chơi truyền thống) — hỏi BTC GCD có cần đối tác thiết kế nội dung + hoạt động trải nghiệm văn hóa. Chin đã trả lời hẹn nhắn tin kết nối. Chin kèm caption: “Sang tuần, các công việc ldp, proposal, và setup gian hàng xong r, mình lập team đi gặp gỡ các đối tác cùng nhau khum cả nhà 😝”.'},
+  {id:'as18', file:'2026-11-02-coc-chin-lich-9h-sang-1634.jpg', title:'Lịch 9h sáng 3/11 tại Bộ VH-TT-DL (Google Maps)', who:'Chin', when:'02/11 · 16:34', topics:['t6','t8'],
+   desc:'Ảnh chụp Google Maps Bộ Văn hóa, Thể thao và Du lịch (51 P. Ngô Quyền, Cửa Nam, Hà Nội — gồm Cục Hợp tác Quốc tế, Vụ KH-CN & MT…). Chin: “Mai có lịch này, trong chương trình GCD. 9h sáng. Mời ace có ai sắp xếp tham gia cùng không?”'},
+  {id:'as19', file:'2026-11-02-jcitl-tinh-tham-khao-booth-oppo-1501.jpg', title:'Booth tham khảo: OPPO Reno14 (mặt bàn U + counter + LED)', who:'Lê Văn Tính', when:'02/11 · 15:01', topics:['t4','t9'],
+   desc:'Ảnh booth activation ngoài trời của OPPO Reno14 tại FPT Shop (mặt bàn chữ U ôm trọn góc, counter trưng bày 2 bên, màn LED dọc, standee giá) — Tính gửi kèm “Anh chị có thể cân nhắc 👉👈” làm mẫu tham khảo cho thiết kế gian hàng GCD.'},
 ];
 const LINKS_EXTRA = [
+  {title:'Folder Google Drive chia sẻ cho cả nhóm', url:'https://drive.google.com/drive/folders/19PCz5rGKf3fZ0XWtzLIJ7OTFcchfmFQM', who:'Thanh Huế', when:'02/11 · 17:18', note:'Folder Drive gửi cho cả nhóm theo yêu cầu “Em share nha” của PD; Chin khen “làm file là nét căng, cứ thế là triển được”.'},
   {title:'Proposal kêu gọi NTT sơ bộ (Canva)', url:'https://canva.link/yb7mllo8jgw6lg6', who:'Phạm Văn Trường', when:'01/11 · 09:27', note:'Bản kêu gọi nhà tài trợ sơ bộ; sẽ bổ sung thêm hạng mục gian hàng sau khi team chốt. Cả nhóm xem và góp ý.'},
   {title:'Fanpage Đoàn Thái Cúc Hương (giấy dó)', url:'https://www.facebook.com/doan.thai.cuc.huong.artsncrafts', who:'Chin', when:'28/10 · 09:52', note:'Vendor gợi ý cho mảng heritage / trải nghiệm văn hóa.'},
   {title:'Link mời bot “Bot JCI GCD 2026”', url:'https://bot.zaloplatforms.com/groups/invite/bot.EhEvevHz', who:'Đỗ Hồng Minh', when:'28/10 · 12:22', note:'Bot Zalo platform đã được add vào nhóm COC GCD 2026 (Chin accept 12:24); khả năng phản hồi chưa xác minh.'},
@@ -332,7 +348,7 @@ function renderOverview(){
     <div class="stat"><b>31 + 5</b><span>thành viên</span></div>
     <div class="stat"><b>14</b><span>người được nhắc</span></div>
     <div class="stat"><b>10</b><span>chủ đề</span></div>
-    <div class="stat"><b>5</b><span>mốc hạn</span></div>
+    <div class="stat"><b>8</b><span>mốc hạn</span></div>
     <div class="stat"><b>6</b><span>việc đang chờ</span></div>
   </div>
 
