@@ -116,12 +116,12 @@
 <div class="layout">
   <nav id="nav">
     <button data-view="overview" class="active">🗺️ Tổng quan</button>
-    <button data-view="people">👥 Nhân sự <span>14</span></button>
+    <button data-view="people">👥 Nhân sự <span>17</span></button>
     <button data-view="topics">🧩 Chủ đề & đầu việc <span>10</span></button>
     <button data-view="timeline">🕒 Dòng thời gian</button>
     <button data-view="decisions">📌 Quyết định & hạn</button>
     <button data-view="open">❓ Đang chờ <span>6</span></button>
-    <button data-view="assets">🖼 Thư viện <span>22</span></button>
+    <button data-view="assets">🖼 Thư viện <span>30</span></button>
   </nav>
   <main id="main">
     <section class="view active" id="v-overview"></section>
@@ -133,7 +133,7 @@
     <section class="view" id="v-assets"></section>
   </main>
 </div>
-<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23/10–05/11/2026) · 22 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 00:10 ngày 05/11/2026 · Tạo & tự cập nhật bởi Cono</div>
+<div class="footer">Nguồn: toàn bộ tin nhắn text của 2 nhóm (23/10–06/11/2026) · 30 ảnh gốc lưu trong thư mục assets/ (mục 🖼 Thư viện) · Dữ liệu cập nhật đến 21:45 ngày 06/11/2026 · Tạo & tự cập nhật bởi Cono</div>
 
 <script>
 const GTAG = g => g==='g1' ? '<span class="grouptag gt1">JCITL</span>' : g==='g2' ? '<span class="grouptag gt2">COC</span>' : '<span class="grouptag gtb">Cả 2 nhóm</span>';
@@ -162,6 +162,10 @@ const P = {
     note:'Được PD thêm vào 26/10; hỗ trợ triển khai chương trình, đặc biệt kết nối NTT và gian hàng.'},
   ngocanh:{name:'Nguyễn Ngọc Anh', init:'NA', g:['g1'], roles:['Thành viên mới (28/10)'], topics:['t4'],
     note:'Quang Đạt giới thiệu vào nhóm sự kiện tháng 11 (đã trao đổi trước một số đầu việc); Chin sẽ hướng dẫn chi tiết.'},
+  viettruong:{name:'Viết Trường', init:'VT', g:['g1'], roles:['Hỗ trợ truyền thông (member mới 06/11)'], topics:['t7'],
+    note:'PD add 06/11 15:38 — “join hỗ trợ cùng team truyền thông chỗ Phan Thủy Anh Wigo Tourist”.'},
+  huuquan:{name:'Nguyễn Hữu Quân', init:'HQ', g:['g1'], roles:['Hỗ trợ hậu cần & đối ngoại tài trợ (member mới 06/11)'], topics:['t8','t6'],
+    note:'PD add 06/11 15:38 — cùng @Tuyến T và @Việt Hồng hỗ trợ hậu cần sự kiện và đối ngoại tài trợ.'},
   phuongmai:{name:'Phương Mai (Nhuận Phát)', init:'PM', g:['g1'], roles:['Phụ trách tài chính sự kiện (member mới 3/11)'], topics:['t9','t6'],
     note:'Được PD add 3/11 19:14; Đinh Hạnh (LT) cố vấn ban tài chính; LDir Đạt phụ trách hậu cần sẽ làm việc nhiều và cùng lên dự trù.'},
   chin:{name:'Chin', init:'C', g:['g1','g2'], roles:['Nội dung & chương trình (JCITL)','Điều phối nhóm digital (COC)'], topics:['t1','t4','t2','t5','t10'],
@@ -182,19 +186,20 @@ const T = {
     extra:['Khớp toàn bộ nội dung tại họp thứ Sáu 30/10']},
   t3:{icon:'⚙️', name:'Hệ thống đăng ký gian hàng', st:'wip', stl:'Đang vận hành — chờ layout + quyết định mail', g:['g2'], owner:['son','minh'], deps:['t4'], assets:['as10'],
     body:'Luồng đã chốt (Sơn xác nhận 28/10 13:39): guest nộp đề xuất KHÔNG cần đăng nhập theo từng vị trí → admin duyệt → 1 vị trí 1 gian; vị trí đã chốt đổi màu trên sơ đồ, bấm trực tiếp lên mặt bằng để chọn. Sau khi xác nhận gian hàng, hệ thống gửi mail xác nhận cho chủ gian — hiện GỬI THỦ CÔNG; nếu muốn tự động, Sơn đề nghị được cấp quyền mail JCI (tối 28/10).'},
-  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'done', stl:'Đã chốt 02/11 — Sơn đã setup demo gian hàng', g:['g1'], owner:['tinh','chin','dat'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10','as12','as13','as19'],
+  t4:{icon:'🎪', name:'Sơ đồ & Layout gian hàng', st:'done', stl:'Đã chốt — layout ĐHQG (Nguyễn Văn Đạo) lên sóng 06/11', g:['g1'], owner:['tinh','chin','dat'], deps:['t9'], assets:['as5','as6','as7','as8','as9','as10','as12','as13','as19','as23'],
     body:'Tối 29/10: Hanh gửi bản hoàn thiện (25 gian chính + mở rộng 40, 6 tiểu khu G01–G24, ≤500m²); team Đạt gửi option 40 booth (3 điểm Roots, cam 360 giữa, lối đi một chiều). Tính phản biện: cổng vào + cửa hội trường đang sai vị trí theo Google Maps; cần thống nhất vị trí giữa 2 option để gian đã chọn không bị ảnh hưởng; 15 gian backup đặt vị trí ít tiếp cận hơn; cần quy trình trải nghiệm khép kín (hiện khách sẽ đi tạt vào, skip gian hàng & khu BTC). 23:58 PD chỉ đạo: LDir Đạt + team xem lại ý kiến Tính, layout theo thực tế không màu mè, hoàn thiện TRONG NGÀY 30/10 (meet nếu cần) — gồm cả backdrop, camera 360, cổng, booth, standee, khung gian hàng. Sáng 30/10 Chin ủy quyền: “nội dung team trải nghiệm đề xuất… LDir giúp chị”.',
     extra:['02/11: layout chốt sáng nay (Chin xác nhận) — Sơn setup demo gian hàng xong theo ý tưởng LDir Đạt; Đinh Hạnh góp ý quay ngang ra ngoài, không úp lưng vào nhau; PD demo AI 3D (bản Premium) cho LDir Đạt tham khảo; Tính gửi booth OPPO làm mẫu (as19)','“Chân gà” = cách gọi đùa của Chin cho phân khu theo 3 chương trình Roots — tên tiểu khu thứ 3 (“roots of …”) vẫn chưa có tên cuối','Landing page + hệ thống map được với layout chốt này']},
   t5:{icon:'📑', name:'Proposal', st:'wip', stl:'Bản kêu gọi NTT sơ bộ đã có — đang làm bản đối tác', g:['g1'], owner:['thu','tam','thuyanh'], deps:[], assets:[],
     body:'01/11: PD gửi link bản kêu gọi NTT sơ bộ trên Canva (xem mục Tài nguyên) — cả nhóm góp ý; sau khi team chốt gian hàng sẽ bổ sung hạng mục gian hàng vào proposal. Đồng thời PD yêu cầu thêm 1 bản “Giới thiệu về chương trình” để làm việc với đối tác/đồng hành (Đoàn, các cộng đồng khác): bỏ hết thông tin tài trợ, có thể thêm trang đề xuất cách các đơn vị đồng hành — Anh Thư xử lý. Lịch sử: bản des xong 28/10 (Thanh Tâm), cập nhật 31/10. 02/11 21:18: Anh Thư gửi file “[Hồ sơ] Global Citizen Day 2026.pdf” (94.2MB) + folder “Hồ sơ” chứa HS chương trình & HS tài trợ final. 03/11: team Đối ngoại bắt đầu GỬI THƯ MỜI NTT; PD yêu cầu gấp chỉnh proposal bổ sung chi tiết cuộc thi Public Speaking & Debating để làm việc với đối tác AIESEC (đề xuất AIESEC làm đơn vị đồng hành triển khai — “cần xúc tiến ngay”).'},
   t6:{icon:'🤝', name:'Tài trợ & Đối tác', st:'wip', stl:'Đang kêu gọi — có lead đối tác trải nghiệm văn hóa', g:['g1'], owner:['truong','thu','tudao'], deps:['t5'], assets:['as1','as17','as18'],
-    body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP. 01–02/11: lead đối tác mới MAI – Open Art (founder Trần Mai Thanh — giáo dục nghệ thuật gắn di sản, tranh dân gian, tò he, múa rối) chủ động hỏi hợp tác trải nghiệm văn hóa, Chin hẹn kết nối (as17); lịch làm việc 9h sáng 03/11 tại Bộ VH-TT-DL (as18) — PD + LP Hùng Vũ đi, Chin trợ tí, Linh +1 — ✅ buổi làm việc ĐOÀN BỘ thành công (“chất lượng”, as20). 03/11: team Đối ngoại bắt đầu gửi thư mời NTT (email mẫu + list NTT tiềm năng — link list bị cắt, xin lại Anh Thư); đối tác AIESEC (JCI Vietnam) đề xuất làm đơn vị đồng hành triển khai PS&D; bảng dự trù tài chính đã gửi (đủ để thu hút nguồn lực); member mới Phương Mai phụ trách tài chính. 01/11: bắt đầu kêu gọi bằng proposal sơ bộ (Canva); PD yêu cầu Đạt + Chin + Huế chốt mức chi phí đầu vào gói gian hàng để chốt gói kêu gọi — nhóm yếu tố di sản/văn hóa để mức phí phù hợp, dễ kêu gọi.'},
+    body:'Nguyên tắc PD: tiếp xúc doanh nghiệp riêng trước, truyền thông sau. Folder Google Drive chung cho NTT (Anh Thư tạo); folder logo gồm cả bộ JCI quy chuẩn + NTT từng tài trợ. Team tài trợ mở rộng 26/10 (~10 người). NTT debating rất quan tâm chương trình → extra quyền lợi, xếp VIP. 01–02/11: lead đối tác mới MAI – Open Art (founder Trần Mai Thanh — giáo dục nghệ thuật gắn di sản, tranh dân gian, tò he, múa rối) chủ động hỏi hợp tác trải nghiệm văn hóa, Chin hẹn kết nối (as17); lịch làm việc 9h sáng 03/11 tại Bộ VH-TT-DL (as18) — PD + LP Hùng Vũ đi, Chin trợ tí, Linh +1 — ✅ buổi làm việc ĐOÀN BỘ thành công (“chất lượng”, as20). 03/11: team Đối ngoại bắt đầu gửi thư mời NTT (email mẫu + list NTT tiềm năng — link list bị cắt, xin lại Anh Thư); đối tác AIESEC (JCI Vietnam) đề xuất làm đơn vị đồng hành triển khai PS&D; bảng dự trù tài chính đã gửi (đủ để thu hút nguồn lực); member mới Phương Mai phụ trách tài chính. 05–06/11 thêm 6 thành viên mới (Hữu Quân, Tuyến T, Việt Hồng, Viết Trường, Doan Phuong Anh, Bùi Việt Quang) hỗ trợ hậu cần/tài trợ/truyền thông/khách mời. Đinh Hạnh chia sẻ insight: người kinh doanh sản phẩm thủ công/di sản chính là đối tượng sẵn sàng trả tiền tham quan — Global Crafts Festival 2026 (Hoàng Thành Thăng Long 13–16/11, ~200 gian/60 quốc gia) và “Gánh Di Sản” (UMVB, 14–15/11 phố đi bộ Hồ Gươm — đề nghị mời UMVB 1 gian hàng). Chin: xin được TÀI TRỢ tặng website miễn phí + 45 ngày hosting (cá nhân hóa cho chủ doanh nghiệp gian hàng); đang mời giảng viên/chuyên gia thiết kế trải nghiệm gian hàng + merchandise. 06/11: lead MAI Open Art tiến triển tốt — chị Trần Mai Thanh gửi hồ sơ chi tiết cho Chin (as29). 01/11: bắt đầu kêu gọi bằng proposal sơ bộ (Canva); PD yêu cầu Đạt + Chin + Huế chốt mức chi phí đầu vào gói gian hàng để chốt gói kêu gọi — nhóm yếu tố di sản/văn hóa để mức phí phù hợp, dễ kêu gọi.'},
   t7:{icon:'📣', name:'Truyền thông', st:'wip', stl:'Chờ chốt timeline (3/11) để bắn tin — có ý tưởng thử thách nhảy viral', g:['g1'], owner:['thuyanh'], deps:['t6'],
-    body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”. 02/11: ý tưởng lớn được PD hé mở — THỬ THÁCH NHẢY viral (JCI Quốc tế từng làm): TikTok gắn hashtag, chấm theo view + xác định đúng địa danh, giải thưởng đủ hấp dẫn; Tính đề xuất slogan “Cùng hưởng ứng ngày hội công dân toàn cầu” + nhạc nền chủ đề năm nay. PD: truyền thông sáng tạo phá cách, không đi lối mòn — thư mời cũng vậy. Trần Nguyên Hạnh: gặp Đoàn 3/11 chốt timeline xong là up truyền thông luôn. 03/11: PD chưa cho bắt đầu truyền thông — “chờ đi, tối nay họp trao đổi thêm; team làm chi tiết thêm các tuyến, kênh truyền thông”; Hùng Vũ: trong lúc chờ hỗ trợ PS&D truyền thông + kéo đội thi; Hùng Vũ gửi reel nghệ nhân “mời về chắc cháy vé”. Sheet truyền thông Wigo gửi 4/11.'},
-  t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'wip', stl:'ĐÃ ĐỔI: Bảo tàng Mỹ Thuật (Nguyễn Thái Học) — đối diện Văn Miếu', g:['g1'], owner:['qhanh','dat'], deps:[], assets:['as2','as3','as4','as15','as20'],
-    body:'⚠️ 03/11: địa điểm ĐỔI — Hanh hỏi “đổi sang Bảo tàng Hồ Chí Minh 19 Ngọc Hà đúng không?” → PD chốt: “Bảo Tàng Mỹ Thuật – Nguyễn Thái Học, đối diện Văn Miếu”. Lịch sử: khảo sát 58 Nguyễn Chí Thanh chiều 31/10 (Chin + Tính + Đạt, PD vắng; Đạt là đầu mối với học viện) — phương án cũ, nay thay bằng Bảo tàng Mỹ Thuật. Hội trường: setup đẹp nhất theo hình vuông (backup 3 cây nến).'},
+    body:'Wigo Tourist (Phan Thủy Anh) phụ thiết kế ảnh các gói tài trợ. Truyền thông diện rộng chỉ chạy sau khi tiếp xúc NTT xong. Tên 6 tiểu khu được đặt để truyền thông dễ viral, “có chuyện để kể”. 02/11: ý tưởng lớn được PD hé mở — THỬ THÁCH NHẢY viral (JCI Quốc tế từng làm): TikTok gắn hashtag, chấm theo view + xác định đúng địa danh, giải thưởng đủ hấp dẫn; Tính đề xuất slogan “Cùng hưởng ứng ngày hội công dân toàn cầu” + nhạc nền chủ đề năm nay. PD: truyền thông sáng tạo phá cách, không đi lối mòn — thư mời cũng vậy. Trần Nguyên Hạnh: gặp Đoàn 3/11 chốt timeline xong là up truyền thông luôn. 03/11: PD chưa cho bắt đầu truyền thông — “chờ đi, tối nay họp trao đổi thêm; team làm chi tiết thêm các tuyến, kênh truyền thông”; Hùng Vũ: trong lúc chờ hỗ trợ PS&D truyền thông + kéo đội thi; Hùng Vũ gửi reel nghệ nhân “mời về chắc cháy vé”. Sheet truyền thông Wigo gửi 4/11. 06/11: PD chốt địa điểm ĐHQG — “chốt được địa điểm là mình sẽ tiến hành truyền thông ngay”; Viết Trường join hỗ trợ team truyền thông; Hùng Vũ yêu cầu cập nhật lại thông tin các bên (chủ trì/bảo trợ/tổ chức/thực hiện) trong ấn phẩm, gửi ấn phẩm gốc lên ĐHQG duyệt rồi adapt (as30).'},
+  t8:{icon:'📍', name:'Địa điểm & Hậu cần', st:'done', stl:'ĐÃ CHỐT 06/11: ĐH Quốc gia — khu Nguyễn Văn Đạo', g:['g1'], owner:['qhanh','dat'], deps:[], assets:['as2','as3','as4','as15','as20','as23','as26','as27'],
+    body:'06/11 15:37 PD chốt phương án Plan B: phối hợp Thành Đoàn Hà Nội + Đoàn ĐH Quốc gia — địa điểm tại ĐH Quốc gia (khu Nguyễn Văn Đạo, giữa đường Phạm Văn Đồng & Xuân Thủy); hội trường + không gian đáp ứng, lắp thêm LED. Layout ĐHQG đã có (as23, các cụm A–K ~66 vị trí). Plan A (Đoàn Bộ VHTTDL + Bảo tàng Mỹ thuật) bị loại vì thủ tục/thời gian/ngân sách khó đảm bảo. Lịch sử: khảo sát 58 NCT 31/10; PD từng chốt Bảo tàng Mỹ thuật 03/11 rồi điều chỉnh.',
+    extra:['⚠️ 06/11: cảnh báo thiên tai 10 ngày tới (công văn 60/BCĐ-BNNMT — as27) — lưu ý kế hoạch ngoài trời tại sân ĐHQG','Triễn lãm sơn mài “Sắc Sơn Tả” ngay tại Bảo tàng Mỹ thuật VN (66 Nguyễn Thái Học) 06–10/11 — tiện khảo sát/giao lưu (as26)','07/11: công văn + trao đổi Ban giám đốc ĐHQG để chốt chính thức (PD + Hùng Vũ)'],
   t9:{icon:'💰', name:'Ngân sách & định mức', st:'wip', stl:'Đang lập dự trù', g:['g1'], owner:['dat','dinhhanh'], deps:[], assets:['as7','as8'],
-    body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. 02/11: Chin nhắc CHƯA có final bản báo giá setup — yêu cầu team (Đạt) đưa deadline. 03/11 20:58: Đạt gửi BẢNG DỰ TRÙ TÀI CHÍNH (Google Sheets) — “ngoài phần chi phí hội trường có thay đổi [do đổi địa điểm], các đầu mục khác tương đối sát, đủ để mn đi thu hút nguồn lực tài trợ”. Member mới Phương Mai (Nhuận Phát) phụ trách tài chính, Đinh Hạnh cố vấn. Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
+    body:'Giá tham khảo đã nêu: cổng hơi 6–10tr, cổng formex 8,5–12,5tr (Hanh đùa “max 15 cho xông xênh”); booth camera 360 ~4–4,5tr. 02/11: Chin nhắc CHƯA có final bản báo giá setup — yêu cầu team (Đạt) đưa deadline. 03/11 20:58: Đạt gửi BẢNG DỰ TRÙ TÀI CHÍNH (Google Sheets) — “ngoài phần chi phí hội trường có thay đổi [do đổi địa điểm], các đầu mục khác tương đối sát, đủ để mn đi thu hút nguồn lực tài trợ”. Member mới Phương Mai (Nhuận Phát) phụ trách tài chính, Đinh Hạnh cố vấn. 05/11: bảo tàng không có LED — thuê ngoài (tham khảo âm thanh loa đài ~12tr); Đinh Hạnh nhắc “ở bảo tàng là phương án kết hợp Bộ VH — nguồn lực, dự trù cần cân đối”. Sau khi chốt ĐHQG (06/11): Đạt + Phương Mai final lại dự trù theo địa điểm mới (Task 2+6 của PD). Nguyên tắc Đinh Hạnh: “sáng tạo trong định mức”; Chin: phương án nào cũng phải trong dự trù cho phép. Quang Đạt phối hợp lên dự trù tài chính.'},
   t10:{icon:'✨', name:'Trải nghiệm gian hàng & sự kiện', st:'info', stl:'Định hướng — khớp tại họp t6', g:['g1'], owner:['truong','chin','tam'], deps:['t2','t3','t4'], assets:['as9','as6'],
     body:'Triết lý của Trường: hành trình người tham dự = truyền thông → đến nơi → gửi xe → checkin → gian hàng → passport → túi quà → chương trình. Sự kiện cần điểm nhấn khác biệt, tinh tế, truyền tải được thông điệp; tối ưu nguồn lực. 02/11: xuất hiện hướng minigame DI SẢN (Tính gửi file bảng chấm điểm minigame_di_san.xlsx; bàn luận vui về “chùa online” có slot, thích khách chốt, khóa dép…) kết hợp thử thách nhảy viral (xem t7). lực, kêu gọi nguồn lực ngoài khi được.'},
 };
@@ -212,16 +217,16 @@ const DECISIONS = [
 ];
 
 const DEADLINES = [
-  {date:'03/11 · 09:00', lvl:'mid', label:'✅ Đã diễn ra: làm việc với Đoàn Bộ VH-TT-DL — “buổi làm việc chất lượng” (as20)', owner:'PD + LP Hùng Vũ + Chin + Linh · ảnh as20'},
-  {date:'Gấp (từ 03/11)', lvl:'urgent', label:'Bổ sung Proposal chi tiết Public Speaking & Debating để làm việc với đối tác AIESEC — “cần xúc tiến ngay”', owner:'Anh Thư + Thủy Anh + Quỳnh Anh + Văn Đạt → PD'},
-  {date:'Đang chạy (từ 03/11)', lvl:'high', label:'Gửi thư mời NTT — team Đối ngoại đã bắt đầu', owner:'Anh Thư (email mẫu + list NTT)'},
-  {date:'Sắp tới', lvl:'high', label:'Final bản báo giá setup + chi phí hội trường mới (sau đổi địa điểm Bảo tàng Mỹ Thuật)', owner:'LDir Đạt + Phương Mai → Chin'},
-  {date:'Đang làm', lvl:'high', label:'Bản “Giới thiệu về chương trình” cho đối tác/đồng hành (bỏ thông tin tài trợ + trang đề xuất đơn vị đồng hành)', owner:'Anh Thư'},
-  {date:'31/10 · 09:27 →', lvl:'mid', label:'✅ Đã có Proposal kêu gọi NTT sơ bộ (Canva) — chờ góp ý + bổ sung hạng mục gian hàng khi chốt xong', owner:'PD công bố · cả nhóm góp ý'},
-  {date:'02/11 · sáng', lvl:'mid', label:'✅ Layout đã chốt + Sơn setup demo gian hàng theo ý tưởng LDir Đạt (PD demo AI 3D)', owner:'Tính + Sơn + Đạt'},
-  {date:'T7 · 31/10 · 14:00–14:30', lvl:'high', label:'✅ Đã diễn ra: khảo sát địa điểm 58 NCT — team tự chốt phương án', owner:'Chin + Tính + Đạt (PD vắng) · ảnh as15'},
-  {date:'Trước 18/11', lvl:'mid', label:'Quyết định chạy phương án 40 hay 25 gian', owner:'Ban tổ chức'},
-  {date:'Tháng 11/2026', lvl:'mid', label:'Sự kiện diễn ra (ngày chính xác chưa được công bố ở cả 2 nhóm)', owner:'Toàn team'},
+  {date:'07/11 (mai)', lvl:'urgent', label:'Công văn + trao đổi với Ban giám đốc ĐH Quốc gia — chốt địa điểm chính thức (Task 1 của PD)', owner:'PD + LP Hùng Vũ phối hợp'},
+  {date:'Tuần này', lvl:'urgent', label:'8 task của PD theo phương án mới: dự toán ĐHQG (Đạt) · Proposal mời Đoàn Bộ đồng hành (Chin) · proposal AIESEC PS&D (gấp) · tuyến bài truyền thông (Thủy Anh) · xúc tiến đối ngoại (Anh Thư) · final tài chính (Phương Mai) · PS&DB cập nhật (Quỳnh Anh) · thủ tục JCI VN (Linh + Việt Quang)', owner:'Toàn team — hoàn thiện trong tuần này'},
+  {date:'Ngay khi chốt ĐHQG', lvl:'high', label:'BẮN TRUYỀN THÔNG ngay (“chốt được địa điểm là tiến hành truyền thông”) — địa điểm đã chốt 06/11', owner:'LDir Thủy Anh + team truyền thông (+ Viết Trường)'},
+  {date:'Sắp tới', lvl:'high', label:'Final bản báo giá setup + dự trù tài chính theo địa điểm ĐHQG', owner:'LDir Đạt + Phương Mai → Chin'},
+  {date:'Đang làm', lvl:'high', label:'Bản “Giới thiệu về chương trình” cho đối tác/đồng hành + ấn phẩm gốc gửi ĐHQG duyệt (as30)', owner:'Anh Thư + LP Hùng Vũ + ban truyền thông'},
+  {date:'Gấp (từ 03/11)', lvl:'urgent', label:'Bổ sung Proposal chi tiết Public Speaking & Debating cho đối tác AIESEC — “cần xúc tiến ngay”', owner:'Anh Thư + Thủy Anh + Quỳnh Anh + Văn Đạt → PD'},
+  {date:'03/11 · 09:00', lvl:'mid', label:'✅ Đã diễn ra: làm việc với Đoàn Bộ VH-TT-DL — “buổi làm việc chất lượng” (as20)', owner:'PD + LP Hùng Vũ + Chin + Linh'},
+  {date:'T7 · 31/10', lvl:'mid', label:'✅ Khảo sát 58 NCT — phương án cũ, nay đã chuyển sang ĐHQG', owner:'Chin + Tính + Đạt · ảnh as15'},
+  {date:'14–15/11', lvl:'mid', label:'“Gánh Di Sản” — Hội chợ Sáng tạo 2026, phố đi bộ Hồ Hoàn Kiếm (Đinh Hạnh đề nghị mời UMVB 1 gian hàng)', owner:'UMVB · cả nhóm cân nhắc tham quan/hỗ trợ'},
+  {date:'05/12 (dự kiến — PD chốt 06/11)', lvl:'urgent', label:'Sự kiện Global Citizens Day: The Heritage Odyssey diễn ra tại ĐH Quốc gia', owner:'Toàn team'},
 ];
 
 const OPEN = [
@@ -231,7 +236,7 @@ const OPEN = [
   {q:'Danh sách khách mời talkshow?', meta:'✅ CẬP NHẬT 22:42 tối 28/10: Sơn đã thêm phần khách mời vào landing page', rec:''},
   {q:'Quyền mail JCI để gửi mail xác nhận gian hàng tự động?', meta:'Sơn đề nghị 22:45 tối 28/10: hiện gửi mail thủ công sau khi xác nhận gian hàng; muốn tự động thì cần quyền vào mail JCI · Hanh hỏi luồng tự động khả thi không',
    rec:'Cần ban tổ chức quyết: cấp quyền mail JCI cho hệ thống (Sơn) hay giữ gửi thủ công.'},
-  {q:'Ngày diễn ra sự kiện cụ thể (tháng 11/2026)?', meta:'Quan sát: cả 2 nhóm chỉ nói “sự kiện tháng 11”', rec:''},
+  {q:'Ngày diễn ra sự kiện cụ thể?', meta:'✅ CẬP NHẬT 06/11 15:37: PD chốt THỜI GIAN TỔ CHỨC DỰ KIẾN 05/12/2026 tại ĐH Quốc gia (khu Nguyễn Văn Đạo)', rec:''},
   {q:'Kết quả họp team tài trợ + tiến độ hồ sơ tài trợ bản des (Wigo)?', meta:'✅ CẬP NHẬT 01/11: Proposal kêu gọi NTT sơ bộ đã có link Canva (PD công bố); đang làm thêm bản “Giới thiệu chương trình” cho đối tác (Anh Thư) — bản des hồ sơ tài trợ đã từng xong 28/10', rec:''},
 ];
 
@@ -256,8 +261,20 @@ const TIMELINE = [
     {t:'15:07–15:54', g:'g1', who:'Tính · Trường · Đinh Hạnh · Đạt', txt:'Trình phương án gian hàng + cổng chào (hơi 6–10tr, formex 8,5–12,5tr, booth 360 ~4–4,5tr); Trường góp ý thêm backdrop, photo booth, camera 360; chia sẻ triết lý trải nghiệm người tham dự; Đinh Hạnh: “sáng tạo trong định mức”.'},
     {t:'16:03', g:'g1', who:'Trường', txt:'Lệnh finalize Proposal (Anh Thư, Thanh Tâm, Thủy Anh) — xong gửi PD double-check.'},
   ]},
-  {day:'05/11/2026 — Gợi ý nghệ nhân', evs:[
+  {day:'06/11/2026 — CHỐT ĐỊA ĐIỂM ĐHQG & thời gian 05/12', evs:[
+    {t:'07:45–09:12', g:'g1', who:'Lê Văn Tính', txt:'Gửi poster triển lãm sơn mài “Sắc Sơn Tả” tại Bảo tàng Mỹ thuật VN (66 Nguyễn Thái Học, 06–10/11) — “lý do để qua bảo tàng”; gửi cảnh báo thiên tai 10 ngày tới (công văn 60/BCĐ-BNNMT) — lưu ý kế hoạch ngoài trời.'},
+    {t:'08:36–09:11', g:'g1', who:'Hùng Vũ · Trường · Chin', txt:'Yêu cầu làm CÔNG VĂN tổng thể gửi Đoàn Bộ TTVHD (file CV_JCIVN_Thanh_Doan_HN_GCD2026-4.docx — trình duyệt mất 2 tuần, làm sớm); Chin nhận trợ tí, hẹn gửi hôm nay; Chin có lịch 11h với đối tác.'},
+    {t:'10:29–11:37', g:'g1', who:'Chin', txt:'XIN ĐƯỢC TÀI TRỢ tặng website miễn phí + 45 ngày hosting (cá nhân hóa cho chủ doanh nghiệp gian hàng, ❤️6); xúc tiến mời giảng viên/chuyên gia thiết kế trải nghiệm gian hàng + merchandise.'},
+    {t:'15:37', g:'g1', who:'Phạm Văn Trường (PD)', txt:'📌 THÔNG BÁO LỚN: 2 phương án đồng hành — chốt Plan B: Thành Đoàn Hà Nội + Đoàn ĐH Quốc gia, địa điểm ĐHQG (lắp thêm LED); THỜI GIAN TỔ CHỨC DỰ KIẾN 05/12. Đoàn Bộ VHTTDL vẫn mời đồng hành (gian hàng, tour SV, truyền thông, diễn giả). 8 task trong tuần cho từng bộ phận. Add 5 thành viên mới (Tuyến T, Bùi Việt Quang, Việt Hồng, Viết Trường, Doan Phuong Anh) + phân công.'},
+    {t:'15:42–15:56', g:'g1', who:'Trường · Đạt · Chin · Hùng Vũ · Tính Đàm', txt:'Trường gửi layout ĐHQG (as23); Chin xác nhận “PD chốt địa điểm quốc gia rồi” — “quay xe với đối tác”; Hùng Vũ chốt vai trò các bên (Thành Đoàn chủ trì · YBA + JCI VN bảo trợ · ĐHQG–Bộ TTVHD tổ chức · JCI Thăng Long + Junior Club thực hiện · PNJ tài trợ kim cương) — cập nhật ấn phẩm gốc gửi ĐHQG duyệt; Tính Đàm gặp Adele (kéo cộng đồng).'},
+    {t:'15:49', g:'g2→g1', who:'Chin', txt:'Nhận hồ sơ chi tiết của Trần Mai Thanh (MAI – Open Art — Cố vấn Văn hóa & Thiết kế trải nghiệm nghệ thuật, 20+ năm kinh nghiệm) — lead đối tác tiến triển tốt (as29).'},
+    {t:'16:03–16:46', g:'g1', who:'Chin · Tính Đàm · Hữu Quân · Hanh', txt:'Chin mở lại đàm phán cổng chào với LocknLock (đầu mối cũ đứt, phải qua HCM); member mới Nguyễn Hữu Quân chào nhóm; Hanh đùa “phải gọi chị là nhà tài trợ kim cương”.'},
+    {t:'18:08', g:'g1', who:'Phạm Văn Trường', txt:'Gửi 2 ảnh rồi thu hồi (nội dung không đưa vào KB vì bị rút lại).'},
+  ]},
+  {day:'05/11/2026 — Chốt layout bảo tàng & insight di sản', evs:[
     {t:'00:04', g:'g1', who:'Hùng Vũ', txt:'Gửi reel nghệ nhân: “Mời được nghệ nhân này về thì chắc cháy vé 😅”.'},
+    {t:'11:13–11:29', g:'g1', who:'Trường · Đạt · Tính · Đinh Hạnh', txt:'PD yêu cầu chốt layout Bảo tàng Mỹ thuật trong ngày (dựa layout HVTTN chỉnh là xong ĐHQG); bảo tàng không có LED — thuê ngoài (âm thanh loa đài tham khảo ~12tr); Đinh Hạnh: “ở bảo tàng là phương án kết hợp Bộ VH — nguồn lực, dự trù cần cân đối, chốt từng bước”.'},
+    {t:'22:41–23:04', g:'g1', who:'Đinh Hạnh', txt:'Insight di sản: người kinh doanh sản phẩm thủ công/di sản sẵn sàng trả vé tham quan — “năm nay trend di sản”; chia sẻ Global Crafts Festival 2026 (Hoàng Thành Thăng Long 13–16/11, ~200 gian/60 quốc gia) và “Gánh Di Sản” (UMVB, 14–15/11 phố đi bộ Hồ Gươm) — đề nghị mời UMVB 1 gian hàng (as24, as25).'},
   ]},
   {day:'04/11/2026 — Nghỉ sau họp, chốt kênh truyền thông', evs:[
     {t:'07:40', g:'g1', who:'Phan Thủy Anh (Wigo)', txt:'Gửi sheet truyền thông (Google Sheets) để cả nhóm theo dõi.'},
@@ -352,6 +369,22 @@ const ASSETS = [
    desc:'Ảnh chụp màn hình Google Meet cuộc họp COC 20:00 tối 3/11 lúc khai mạc: Nguyễn Quang Hanh, Sơn Đường Minh, Mai Nguyễn Lê Phương, Tính Lê Văn, Trường Phạm Văn.'},
   {id:'as22', file:'2026-11-03-jcitl-hop-coc-17-nguoi-2027.jpg', title:'Họp COC tối 3/11 — 20:27 (17 người tham gia)', who:'Phạm Văn Trường', when:'03/11 · 20:28', topics:['t10'],
    desc:'Ảnh chụp màn hình họp COC tối 3/11 lúc 20:27: 17 người tham gia (Chi Nguyen, Đạt Nguyễn, Sơn Đường Minh, Mạnh Hùng Vũ, Mai Nguyễn Lê Phương, Tính Lê Văn, Thư Anh, Thanh Tâm, Hiệp Nguyen, Mỹ Vũ Lê Hà, Tính Đàm, Quỳnh Anh Nguyễn, Trường Phạm Văn…).'},
+  {id:'as23', file:'2026-11-06-jcitl-layout-dhqg-1542.jpg', title:'Layout ĐH Quốc gia — khu Nguyễn Văn Đạo (mới chốt)', who:'Phạm Văn Trường', when:'06/11 · 15:42', topics:['t4','t8'],
+   desc:'Bản đồ mặt bằng ĐHQG giữa đường Phạm Văn Đồng và Xuân Thủy: Hội trường Nguyễn Văn Đạo + tòa điều hành + sân khấu; các cụm gian hàng A0–A7, B1–B5, C1–C5, D1–D21, E1–E14, F1–F7, H0–H6, K1–K6; đài phun nước, bồn hoa, 2 bãi đỗ xe. Trường: “Layout sự kiện gần đây bên ĐH Quốc Gia gửi” — Đạt nhận thông tin triển khai.'},
+  {id:'as24', file:'2026-11-05-jcitl-dinh-hanh-anh-2241.jpg', title:'Insight: Global Crafts Festival 2026 (Hoàng Thành Thăng Long)', who:'Đinh Hạnh', when:'05/11 · 22:41', topics:['t6','t10'],
+   desc:'Ảnh chụp FB: “Gần 200 gian hàng của các nghệ nhân đến từ 60 quốc gia tự hội tại Hoàng Thành Thăng Long từ 13–16/11/2026” (post Cộng đồng ETSY Việt Nam) — Đinh Hạnh chia sẻ để team nắm đối tượng quan tâm sản phẩm thủ công/di sản và cơ hội mời gian hàng.'},
+  {id:'as25', file:'2026-11-05-jcitl-dinh-hanh-ganh-di-san-2304.jpg', title:'“Gánh Di Sản” tuyển TNV — 14–15/11 phố đi bộ Hồ Gươm', who:'Đinh Hạnh', when:'05/11 · 23:04', topics:['t6','t10','t7'],
+   desc:'Post tuyển tình nguyện viên “Gánh Di Sản” (UMVB — Doanh nghiệp Xã hội Ước Mơ Vùng Biển): hỗ trợ gian hàng tại Hội chợ Sáng tạo 2026 (Lễ hội Thiết kế & Sáng tạo Hà Nội), 14–15/11/2026, phố đi bộ Hồ Hoàn Kiếm; quyền lợi có chứng nhận EUSE/ViEt Hợp Nói, trợ cấp 150.000đ/ca. Đinh Hạnh đề nghị: “mời UMVB 1 gian hàng thôi mn nhỉ”.'},
+  {id:'as26', file:'2026-11-06-jcitl-sac-son-ta-0745.jpg', title:'Triễn lãm sơn mài “Sắc Sơn Tả” tại Bảo tàng Mỹ thuật VN (66 Nguyễn Thái Học)', who:'Lê Văn Tính', when:'06/11 · 07:45', topics:['t8','t10','t1'],
+   desc:'Poster triển lãm “Sắc Sơn Tả — Vietnamese Lacquer Art” tại Bảo tàng Mỹ thuật Việt Nam (66 Nguyễn Thái Học — ngay khu địa điểm mới), 06–10/11/2026, vào miễn phí. Tính: “Tự nhiên có lý do để qua bảo tàng luôn 🤧” — vừa khảo sát vừa giao lưu nghệ thuật.'},
+  {id:'as27', file:'2026-11-06-jcitl-canh-bao-thien-tai-0912.jpg', title:'Cảnh báo thiên tai 10 ngày tới (công văn 60/BCĐ-BNNMT)', who:'Lê Văn Tính', when:'06/11 · 09:12', topics:['t8'],
+   desc:'Ảnh chụp FB Hà Nội News: Công văn 60/BCĐ-BNNMT ngày 04/11/2026 — đề nghị các tỉnh, thành Bắc Bộ và Trung Bộ chủ động ứng phó các hình thái thiên tai trong 10 ngày tới. Tính gửi kèm “A di đà phật 🙏” — cần lưu ý cho kế hoạch tổ chức ngoài trời tại sân ĐHQG.'},
+  {id:'as28', file:'2026-11-06-jcitl-tinh-dam-gap-adele-1545.jpg', title:'Ảnh làm việc với Adele', who:'Tính Đàm', when:'06/11 · 15:45', topics:['t6'],
+   desc:'Ảnh 2 thành viên chụp trước ngôi nhà cổ khi làm việc — Tính Đàm: “Nay em có gặp Adele” (bàn về kéo cộng đồng support sự kiện).'},
+  {id:'as29', file:'2026-11-06-jcitl-chin-ho-so-mai-open-art-1549.jpg', title:'Hồ sơ Trần Mai Thanh (MAI – Open Art) gửi Chin', who:'Chin', when:'06/11 · 15:49', topics:['t6','t10','t1'],
+   desc:'Ảnh chụp Zalo: Trần Mai Thanh gửi lại hồ sơ — “Cố vấn Văn hóa & Thiết kế trải nghiệm nghệ thuật”: Thạc sĩ Văn hóa học, giảng viên Khoa Kiến trúc (ĐH Kinh doanh và Công nghệ Hà Nội), nhà sáng lập Xưởng Hội họa MAI – Open Art, hơn 20 năm kinh nghiệm mỹ thuật/giáo dục nghệ thuật gắn di sản; thế mạnh xây dựng nội dung và thiết kế trải nghiệm nghệ thuật cho các nhóm công chúng. Lead đối tác đang tiến triển tốt.'},
+  {id:'as30', file:'2026-11-06-jcitl-hung-vu-anh-pham-goc.jpg', title:'Poster GCD kỳ trước — mẫu cấu trúc đơn vị cho ấn phẩm mới', who:'Hùng Vũ', when:'06/11 · chiều', topics:['t1','t7'],
+   desc:'Hùng Vũ gửi lại poster GCD 2025 “Beautiful Living” (29/11/2025, ĐH Quốc tế Hồng Bàng) làm mẫu: hàng đầu tiên ghi rõ Đơn vị chỉ đạo / Đơn vị tổ chức / Đơn vị thực hiện / Nhà tài trợ kim cương — LP sẽ cập nhật lại thông tin các bên cho ấn phẩm GCD 2026, gửi ĐHQG duyệt rồi adapt.'},
 ];
 const LINKS_EXTRA = [
   {title:'Folder “Hồ sơ” — HS chương trình + HS tài trợ final', url:'https://drive.google.com/drive/folders/1bjMKDZZehl3caH3WEq-NEaIZJ2Fc5E6f', who:'Anh Thư', when:'02/11 · 21:28', note:'Gồm Hồ sơ chương trình (PDF 94.2MB gửi kèm) và Hồ sơ tài trợ bản final — dùng để gửi đối tác. Anh Thư: “HS để ac gửi đối tác ạ”.'},
@@ -384,7 +417,7 @@ function renderOverview(){
 
   <div class="card">
     <h3 style="font-size:14.5px">Sự kiện: “Global Citizens Day: The Heritage Odyssey”</h3>
-    <p style="font-size:13px; color:#374151; margin-top:6px">Chương trình của <b>JCI Thăng Long</b>, đơn vị chỉ đạo <b>Thành đoàn + YBA</b>. Diễn ra <b>tháng 11/2026</b> (ngày chưa công bố). Concept: <b>heritage — di sản văn hóa</b>. Quy mô gian hàng: 2 phương án <b>40</b> (chính) / <b>25</b> (backup) gian, chia <b>6 tiểu khu</b>. Hai nhóm ZaloCRM phục vụ cùng một sự kiện: nhóm lớn là ban tổ chức, nhóm nhỏ là tổ digital (landing page + hệ thống đăng ký gian hàng).</p>
+    <p style="font-size:13px; color:#374151; margin-top:6px">Chương trình của <b>JCI Thăng Long</b>. Vai trò chính thức (LP chốt 06/11): <b>Thành Đoàn Hà Nội — đơn vị chủ trì</b>; <b>YBA + JCI Việt Nam — đơn vị bảo trợ</b>; <b>ĐH Quốc gia — Bộ TTVHD (nếu có) — đơn vị tổ chức</b>; Logo GCD là chương trình tách riêng; <b>JCI Thăng Long + JCI Thăng Long Junior Club — đơn vị thực hiện</b>; PNJ… — nhà tài trợ kim cương/vàng bạc. 📅 <b>Thời gian dự kiến: 05/12/2026</b> · 📍 <b>Địa điểm đã chốt 06/11: ĐH Quốc gia (khu Nguyễn Văn Đạo)</b> — Plan B (thay cho Bảo tàng Mỹ thuật). Concept: <b>heritage — di sản văn hóa</b>. Hai nhóm ZaloCRM phục vụ cùng một sự kiện: nhóm lớn là ban tổ chức, nhóm nhỏ là tổ digital (landing page + hệ thống đăng ký gian hàng).</p>
     <div style="margin-top:8px">${chipT('t1')} ${chipT('t4')} ${chipT('t10')}</div>
   </div>
 
